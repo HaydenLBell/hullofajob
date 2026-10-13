@@ -221,14 +221,19 @@ namespace cowsins
             // However if we detected an interactable + we pressing the interact button, then: 
             if (inputManager.Interacting)
             {
+                // Use this object's hold time if it has one, otherwise the global default
+                float required = highlightedInteractable.HoldTimeOverride >= 0f
+                    ? highlightedInteractable.HoldTimeOverride
+                    : progressRequiredToInteract;
+
                 progressElapsed += Time.deltaTime;
-                if (progressRequiredToInteract > 0)
+                if (required > 0)
                 {
-                    Events.OnInteractionProgressChanged?.Invoke(progressElapsed / progressRequiredToInteract);
+                    Events.OnInteractionProgressChanged?.Invoke(progressElapsed / required);
                 }
 
                 // Interact
-                if (progressElapsed >= progressRequiredToInteract || highlightedInteractable.InstantInteraction && progressElapsed > 0) PerformInteraction();
+                if (progressElapsed >= required || highlightedInteractable.InstantInteraction && progressElapsed > 0) PerformInteraction();
             }
             else
             {

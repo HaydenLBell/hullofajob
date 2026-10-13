@@ -32,8 +32,8 @@ namespace cowsins
 
         public string Name => _name;
 
-        [ReadOnly, SaveField] public float health;
-        [ReadOnly, SaveField] public float shield;
+        [SaveField] public float health;
+        [SaveField] public float shield;
 
         public float Health => health;
         public float Shield => shield;
@@ -82,8 +82,8 @@ namespace cowsins
         public virtual void Start()
         {
             // Status initial settings
-            health = maxHealth;
-            shield = maxShield;
+            //health = maxHealth;
+            //shield = maxShield;
 
             // Spawn
             events.OnSpawn.Invoke();
@@ -100,21 +100,14 @@ namespace cowsins
         {
             if (isDead) return;
 
-            float damage = Mathf.Abs(_damage);
+            float damage = _damage;
             float oldDmg = damage;
             bool hitShield = shield > 0;
-            if (damage <= shield) // Shield will be damaged
-            {
-                shield -= damage;
-            }
-            else
-            {
-                damage = damage - shield;
-                shield = 0;
-                health -= damage;
-                UpdateHealthBar();
-            }
-            UpdateShieldBar();
+
+            if (isDead) return;
+
+            health = Mathf.Clamp(health - _damage, 0f, maxHealth);
+            UpdateHealthBar();
 
             // Custom event on damaged
             events.OnDamaged.Invoke();

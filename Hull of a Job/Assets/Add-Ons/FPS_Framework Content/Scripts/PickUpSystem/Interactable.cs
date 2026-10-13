@@ -26,6 +26,11 @@ namespace cowsins
 
         [SerializeField] private bool instantInteraction = false;
 
+        [Tooltip("Seconds to hold interact. -1 uses the InteractManager's default.")]
+        [SerializeField] private float holdTimeOverride = -1f;
+
+        public float HoldTimeOverride => holdTimeOverride;
+
         public bool InstantInteraction => instantInteraction;
 
         [System.Serializable]
@@ -93,6 +98,8 @@ namespace cowsins
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty("interactText"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("interactableEvents"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("instantInteraction"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("holdTimeOverride"));
             serializedObject.ApplyModifiedProperties();
 
         }
