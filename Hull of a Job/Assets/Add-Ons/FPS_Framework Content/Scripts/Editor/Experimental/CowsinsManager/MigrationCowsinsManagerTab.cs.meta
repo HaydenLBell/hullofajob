@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f0d9c40a7f0a7cf42a5824dd59d2a9bd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 218594
+  packageName: FPS Engine
+  packageVersion: 1.6.1
+  assetPath: Assets/Cowsins/Scripts/Editor/Experimental/CowsinsManager/MigrationCowsinsManagerTab.cs
+  uploadId: 1019066

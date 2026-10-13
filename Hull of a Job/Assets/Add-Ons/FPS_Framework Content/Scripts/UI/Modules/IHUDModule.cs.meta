@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a45047846db6bc44987141ff83c7abc5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 218594
+  packageName: FPS Engine
+  packageVersion: 1.6.1
+  assetPath: Assets/Cowsins/Scripts/UI/Modules/IHUDModule.cs
+  uploadId: 1019066

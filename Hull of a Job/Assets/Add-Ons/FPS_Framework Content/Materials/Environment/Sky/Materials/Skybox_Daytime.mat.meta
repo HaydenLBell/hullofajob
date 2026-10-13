@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7f435cca796809a44acfafe0f0fc5cc0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 218594
+  packageName: FPS Engine
+  packageVersion: 1.6.1
+  assetPath: Assets/Cowsins/Materials/Environment/Sky/Materials/Skybox_Daytime.mat
+  uploadId: 1019066

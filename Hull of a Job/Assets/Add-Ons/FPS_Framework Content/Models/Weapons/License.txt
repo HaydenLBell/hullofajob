@@ -1,0 +1,14 @@
+The following third-party assets are used in this package. 
+All listed assets are licensed under Creative Commons Attribution (CC BY). Please refer to each original source for the creator information and applicable license details.
+
+- FNX-45: https://sketchfab.com/3d-models/low-poly-fnx-45-bf6e77ab7a654821afd73a7648da2e10
+- Revolver: https://sketchfab.com/3d-models/colt-m1917-revolver-low-poly-5f08807e98e44c869e4abd2fa6ab4698
+- 1911: https://sketchfab.com/3d-models/low-poly-m1911-117f542d21954ae0a59afaedadcff338
+- HK416 Rifle: https://sketchfab.com/3d-models/low-poly-hk416-059e968f6f764357880807c62c117ab7
+- RPG / Rocket Launcher: https://sketchfab.com/3d-models/low-poly-rpg-7-5243ac034391491f9a47f797ea212afe
+- M26 MASS Shotgun: https://sketchfab.com/3d-models/low-poly-m26-mass-eaa3309039cb496ca4f076c131bd315b
+- MP7: https://sketchfab.com/3d-models/low-poly-hk-mp7-0ebd1e2b7a60408cb3b587b4807635ab
+- Knife: https://sketchfab.com/3d-models/low-poly-tactical-knife-d0738d302fbc4341967fb2d787d03526
+- FAMAS: https://sketchfab.com/3d-models/low-poly-famas-f1-bbd20712667e49088f5c9960b97c3d83
+- MARLIN Shotgun: https://sketchfab.com/3d-models/low-poly-marlin-model-336-1a7df7a2448a4f2ab38fdd6001356ffd
+- KATANA: https://sketchfab.com/3d-models/katana-c025176e92654ca49e084de576a12315
