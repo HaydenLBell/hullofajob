@@ -160,25 +160,7 @@ MonoBehaviour:
   showBulletShells: 0
   bulletHoleImpact:
     defaultImpact: {fileID: 2462405574108921655, guid: e6d36bb0ebdf6cc4dacdeee8b6e8a0ce, type: 3}
-    bulletHoleImpact:
-    - layerName: Ground
-      bulletHoleImpact: {fileID: 2462405574108921655, guid: e6d36bb0ebdf6cc4dacdeee8b6e8a0ce, type: 3}
-      cachedLayerIndex: 3
-    - layerName: Enemy
-      bulletHoleImpact: {fileID: 2462405574108921655, guid: 8c95f7225cf58144d86befe4ddc08efb, type: 3}
-      cachedLayerIndex: 7
-    - layerName: Grass
-      bulletHoleImpact: {fileID: 2462405574108921655, guid: 96098beba501e3247b9452e9455f6189, type: 3}
-      cachedLayerIndex: 10
-    - layerName: Metal
-      bulletHoleImpact: {fileID: 2462405574108921655, guid: e6d36bb0ebdf6cc4dacdeee8b6e8a0ce, type: 3}
-      cachedLayerIndex: 11
-    - layerName: Mud
-      bulletHoleImpact: {fileID: 2462405574108921655, guid: 4445bafd3b5e24c4eb41ba27f6a44af4, type: 3}
-      cachedLayerIndex: 12
-    - layerName: Wood
-      bulletHoleImpact: {fileID: 2462405574108921655, guid: 49ec6833820c5774ea4015ac770e6801, type: 3}
-      cachedLayerIndex: 13
+    bulletHoleImpact: []
   muzzleVFX: {fileID: 1336949550903370, guid: 679d294f11bff5d49b2fc3da2db6c3b7, type: 3}
   bulletGraphics: {fileID: 8223321369896048100, guid: 7398cf6333f343048878df03af22c20a, type: 3}
   useProceduralShot: 0

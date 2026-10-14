@@ -169,6 +169,7 @@ namespace cowsins
                     return;
                 }
                 SetLayerRecursively(gameObject, layer);
+                SetLayerRecursively(this.gameObject, layer);
             }
         }
 

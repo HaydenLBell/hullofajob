@@ -6,6 +6,7 @@ namespace cowsins
     {
         WallSmudge,
         Puddle,
+        Pile,
         Graffiti
     }
 
@@ -85,15 +86,16 @@ namespace cowsins
 
         private string GetMissingText() => $"<color=#{ColorUtility.ToHtmlStringRGB(missingWeaponColor)}>{missingWeaponText}</color>";
 
-        private string GetCleanText() => "Clean " + GetMessName();
+        private string GetCleanText() => "" + GetMessName();
 
         private string GetMessName()
         {
             switch (messType)
             {
-                case MessType.WallSmudge: return "Wall Smudge";
-                case MessType.Puddle: return "Puddle";
-                case MessType.Graffiti: return "Graffiti";
+                case MessType.WallSmudge: return "Wipe Wall Smudge";
+                case MessType.Puddle: return "Mop up Puddle";
+                case MessType.Graffiti: return "Clean Graffiti";
+                case MessType.Pile: return "Pick up Pile";
                 default: return "Mess";
             }
         }
