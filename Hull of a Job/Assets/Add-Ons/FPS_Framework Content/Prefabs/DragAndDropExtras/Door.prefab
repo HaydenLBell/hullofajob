@@ -137,11 +137,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d683c5ccfb0c4274695ec1b537855e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 060f2b4b-b787-4464-8ce7-2034de8a1c07
+  uniqueID: e1bf2042-f28f-4423-9822-0536dcc8ac51
   interactable: 0
   interactText: Must be null for this example
   instantInteraction: 0
   holdTimeOverride: -1
+  hideOnInteract: 0
   interactableEvents:
     OnInteract:
       m_PersistentCalls:

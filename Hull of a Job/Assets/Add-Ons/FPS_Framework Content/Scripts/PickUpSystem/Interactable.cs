@@ -29,8 +29,11 @@ namespace cowsins
         [Tooltip("Seconds to hold interact. -1 uses the InteractManager's default.")]
         [SerializeField] private float holdTimeOverride = -1f;
 
-        public float HoldTimeOverride => holdTimeOverride;
+        [Tooltip("Stop showing the interaction prompt after this has been interacted with once.")]
+        [SerializeField] private bool hideOnInteract = false;
 
+        public float HoldTimeOverride => holdTimeOverride;
+        public bool HideOnInteract => hideOnInteract;
         public bool InstantInteraction => instantInteraction;
 
         [System.Serializable]
@@ -52,15 +55,35 @@ namespace cowsins
         {
             interactableEvents.OnInteract?.Invoke();
             alreadyInteracted = true;
+            if (hideOnInteract) DisableInteraction();
 #if SAVE_LOAD_ADD_ON
             StoreData();
 #endif
+        }
+
+        /// <summary>
+        /// Stops the interaction prompt from appearing by moving this object
+        /// (and any child colliders) off the Interactable layer.
+        /// </summary>
+        protected void DisableInteraction()
+        {
+            interactable = false;
+            Unhighlight();
+
+            int defaultLayer = LayerMask.NameToLayer("Default");
+            gameObject.layer = defaultLayer;
+            foreach (Collider col in GetComponentsInChildren<Collider>())
+            {
+                col.gameObject.layer = defaultLayer;
+                col.enabled = false;
+            }
         }
 
         public virtual void Highlight(Transform player)
         {
 
         }
+
         public virtual void Unhighlight()
         {
 
@@ -68,7 +91,12 @@ namespace cowsins
 
         public virtual bool IsForbiddenInteraction(IWeaponReferenceProvider weaponController)
         {
-            return false; 
+            return false;
+        }
+
+        public void changePosition(float x)
+        {
+            this.transform.position = new Vector3(x, this.transform.position.y, this.transform.position.z);
         }
     }
 
@@ -100,6 +128,7 @@ namespace cowsins
             EditorGUILayout.PropertyField(serializedObject.FindProperty("interactableEvents"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("instantInteraction"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("holdTimeOverride"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("hideOnInteract"));
             serializedObject.ApplyModifiedProperties();
 
         }

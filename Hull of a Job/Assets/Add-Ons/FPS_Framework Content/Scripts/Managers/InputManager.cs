@@ -62,6 +62,7 @@ namespace cowsins
             dashHandler = ctx => OnDash?.Invoke();
             inspectHandler = ctx => OnInspect?.Invoke();
             meleeHandler = ctx => OnMelee?.Invoke();
+            //meleeHandler = ctx => OnToggleFlashlight?.Invoke();
             flashlightHandler = ctx => OnToggleFlashlight?.Invoke();
             grappleStartHandler = ctx => OnStartGrapple?.Invoke();
             grappleStopHandler = ctx => OnStopGrapple?.Invoke();

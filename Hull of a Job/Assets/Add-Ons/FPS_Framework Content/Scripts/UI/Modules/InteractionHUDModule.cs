@@ -70,7 +70,7 @@ namespace cowsins
 
             if (allowedInteractionSFX != null && SoundManager.Instance != null)
             {
-                SoundManager.Instance.PlaySound(allowedInteractionSFX, 0, 0, false);
+                SoundManager.Instance.PlaySound(allowedInteractionSFX, 0, 0, false, 0.1f);
             }
         }
 

@@ -24,13 +24,32 @@ namespace cowsins
             if (source3D != null && PoolManager.Instance != null) PoolManager.Instance.RegisterPool(source3D.gameObject, 5);
         }
 
+        // volume
+        public void PlaySound(AudioClip clip, float delay, float pitchAdded, bool randomPitch, float volume)
+        {
+            StartCoroutine(Play(clip, delay, pitchAdded, randomPitch, volume));
+        }
+
+        // no volume
         public void PlaySound(AudioClip clip, float delay, float pitchAdded, bool randomPitch)
         {
             StartCoroutine(Play(clip, delay, pitchAdded, randomPitch));
         }
+
         public void PlaySoundAtPosition(AudioClip clip, Vector3 position, float delay, float pitchAdded, bool randomPitch)
         {
             StartCoroutine(PlayAtPosition(clip, position, delay, pitchAdded, randomPitch));
+        }
+
+        private IEnumerator Play(AudioClip clip, float delay, float pitch, bool randomPitch, float volume)
+        {
+            if (clip == null) yield break;
+            yield return new WaitForSeconds(delay);
+            float pitchAdded = randomPitch ? Random.Range(-pitch, pitch) : pitch;
+            src.pitch = 1 + pitchAdded;
+            src.volume = volume;
+            src.PlayOneShot(clip);
+            yield return null;
         }
 
         private IEnumerator Play(AudioClip clip, float delay, float pitch, bool randomPitch)

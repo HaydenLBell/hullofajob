@@ -251,11 +251,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50270bf9b1e3cb248bf251576baa1135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  uniqueID: 5d80a59f-cd3e-4c94-bd3d-d6408d2dc0bf
+  uniqueID: fccab7a8-1ce3-41a6-9ffa-44d651d0a6aa
   interactable: 0
   interactText: Clean Puddle
   instantInteraction: 0
   holdTimeOverride: 3
+  hideOnInteract: 0
   interactableEvents:
     OnInteract:
       m_PersistentCalls:
