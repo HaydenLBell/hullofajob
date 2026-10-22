@@ -7,6 +7,9 @@ using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameObject emergencyLights;
+    [SerializeField] private GameObject normalLights;
+
     [SerializeField] private int totalObjects;
     [SerializeField] private int repairedObjects;
     [SerializeField] private float percentRepaired;
@@ -27,6 +30,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        emergencyLights.SetActive(true);
+        normalLights.SetActive(false);
+
         tasks = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None)
             .OfType<IRepairTask>()
             .ToArray();

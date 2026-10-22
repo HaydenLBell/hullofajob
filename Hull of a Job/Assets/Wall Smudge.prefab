@@ -71,11 +71,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50270bf9b1e3cb248bf251576baa1135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  uniqueID: 94dcb83b-a2e3-41e5-b1b0-9e952d6c577d
+  uniqueID: 1cd984d2-16d3-45a8-b3b1-97c898926be5
   interactable: 0
   interactText: Clean Puddle
   instantInteraction: 0
   holdTimeOverride: 3.1
+  hideOnInteract: 0
   interactableEvents:
     OnInteract:
       m_PersistentCalls:

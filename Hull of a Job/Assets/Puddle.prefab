@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50270bf9b1e3cb248bf251576baa1135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  uniqueID: fccab7a8-1ce3-41a6-9ffa-44d651d0a6aa
+  uniqueID: d3cb17ac-0415-4f31-9a80-0694b10ade82
   interactable: 0
   interactText: Clean Puddle
   instantInteraction: 0
