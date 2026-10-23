@@ -79,14 +79,55 @@ namespace cowsins
             }
         }
 
+        // Cached reference to the outline, so we only search for it once
+        private OutlineAsset outline;
+        private bool outlineSearched = false;
+
+        protected OutlineAsset GetOutline()
+        {
+            if (outlineSearched == false)
+            {
+                outline = GetComponent<OutlineAsset>();
+                outlineSearched = true;
+            }
+
+            return outline;
+        }
+
         public virtual void Highlight(Transform player)
         {
+            OutlineAsset currentOutline = GetOutline();
 
+            // No outline on this object, so do nothing
+            if (currentOutline == null)
+            {
+                return;
+            }
+
+            // Already showing, so skip
+            if (currentOutline.enabled)
+            {
+                return;
+            }
+
+            currentOutline.enabled = true;
         }
 
         public virtual void Unhighlight()
         {
+            OutlineAsset currentOutline = GetOutline();
 
+            if (currentOutline == null)
+            {
+                return;
+            }
+
+            if (currentOutline.enabled == false)
+            {
+                return;
+            }
+
+            currentOutline.enabled = false;
         }
 
         public virtual bool IsForbiddenInteraction(IWeaponReferenceProvider weaponController)
@@ -94,10 +135,7 @@ namespace cowsins
             return false;
         }
 
-        public void changePosition(float x)
-        {
-            this.transform.position = new Vector3(x, this.transform.position.y, this.transform.position.z);
-        }
+       
     }
 
 

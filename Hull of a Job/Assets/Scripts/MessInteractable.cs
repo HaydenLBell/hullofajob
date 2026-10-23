@@ -7,7 +7,9 @@ namespace cowsins
         WallSmudge,
         Puddle,
         Pile,
-        Graffiti
+        Graffiti,
+        Bed,
+        Furniture
     }
 
     public class MessInteractable : Interactable, IRepairTask
@@ -24,9 +26,19 @@ namespace cowsins
         [SerializeField] private string missingWeaponText = "Needs Mop!";
         [SerializeField] private Color missingWeaponColor = Color.red;
 
+        [Header("Outline Colours")]
+        [SerializeField] private Color canCleanOutlineColor = Color.white;
+        [SerializeField] private Color missingWeaponOutlineColor = new Color(0.55f, 0.55f, 0.55f, 1f);
+
+        [Tooltip("Can be interacted with again after the first time (e.g. doors). Still only counts towards progress once.")]
+        [SerializeField] private bool repeatable = false;
+
         public bool IsRepaired => alreadyInteracted;
 
         private PlayerDependencies player;
+
+        // Remembers whether the player can currently clean this
+        private bool canCleanNow = false;
 
         private void Start()
         {
@@ -39,7 +51,7 @@ namespace cowsins
                 player.WeaponEvents.Events.OnReleaseWeapon.AddListener(OnWeaponRemoved);
             }
 
-            RefreshText();
+            RefreshState();
         }
 
         private void OnDestroy()
@@ -53,27 +65,92 @@ namespace cowsins
 
         public override void Interact(Transform playerTransform)
         {
-            if (alreadyInteracted) return;
             if (!HasRequiredWeapon()) return;
 
-            base.Interact(playerTransform); // sets alreadyInteracted and fires OnInteract
-            RepairEvents.Notify();
+            bool firstTime = alreadyInteracted == false;
+
+            // Non-repeatable mess can only be done once
+            if (firstTime == false && repeatable == false) return;
+
+            base.Interact(playerTransform); // fires OnInteract and sets alreadyInteracted
+
+            // Only count towards progress the first time
+            if (firstTime)
+            {
+                RepairEvents.Notify();
+            }
+
+            // Repeatable objects stay in the world and stay interactable
+            if (repeatable)
+            {
+                return;
+            }
 
             if (hideOnClean) gameObject.SetActive(false);
             else GetComponent<Collider>().enabled = false; // stop re-interacting
         }
 
-        private void OnWeaponEquipped(bool autoReload, bool prop2) => RefreshText();
-
-        // Nothing is equipped at this point, so the requirement can't be met
-        private void OnWeaponRemoved()
+        public override void Highlight(Transform playerTransform)
         {
-            interactText = requiredWeapon == null ? GetCleanText() : GetMissingText();
+            SetOutlineColour(canCleanNow);
+            base.Highlight(playerTransform);
         }
 
-        private void RefreshText()
+        private void OnWeaponEquipped(bool autoReload, bool prop2)
         {
-            interactText = HasRequiredWeapon() ? GetCleanText() : GetMissingText();
+            RefreshState();
+        }
+
+        // Nothing is equipped at this point, so only "no requirement" can pass
+        private void OnWeaponRemoved()
+        {
+            bool canClean = requiredWeapon == null;
+            ApplyState(canClean);
+        }
+
+        private void RefreshState()
+        {
+            bool canClean = HasRequiredWeapon();
+            ApplyState(canClean);
+        }
+
+        // Updates the prompt text and the outline colour together
+        private void ApplyState(bool canClean)
+        {
+            canCleanNow = canClean;
+
+            if (canClean)
+            {
+                interactText = GetCleanText();
+            }
+            else
+            {
+                interactText = GetMissingText();
+            }
+
+            SetOutlineColour(canClean);
+        }
+
+        private void SetOutlineColour(bool canClean)
+        {
+            OutlineAsset outline = GetOutline();
+
+            if (outline == null)
+            {
+                return;
+            }
+
+            Color targetColour = missingWeaponOutlineColor;
+            if (canClean)
+            {
+                targetColour = canCleanOutlineColor;
+            }
+
+            // Only change it if it's actually different
+            if (outline.OutlineColor != targetColour)
+            {
+                outline.OutlineColor = targetColour;
+            }
         }
 
         private bool HasRequiredWeapon()
@@ -84,9 +161,16 @@ namespace cowsins
             return player.WeaponReference.Weapon == requiredWeapon;
         }
 
-        private string GetMissingText() => $"<color=#{ColorUtility.ToHtmlStringRGB(missingWeaponColor)}>{missingWeaponText}</color>";
+        private string GetMissingText()
+        {
+            string hexColour = ColorUtility.ToHtmlStringRGB(missingWeaponColor);
+            return "<color=#" + hexColour + ">" + missingWeaponText + "</color>";
+        }
 
-        private string GetCleanText() => "" + GetMessName();
+        private string GetCleanText()
+        {
+            return GetMessName();
+        }
 
         private string GetMessName()
         {
@@ -96,10 +180,10 @@ namespace cowsins
                 case MessType.Puddle: return "Mop up Puddle";
                 case MessType.Graffiti: return "Clean Graffiti";
                 case MessType.Pile: return "Pick up Pile";
+                case MessType.Bed: return "Make Bed";
+                case MessType.Furniture: return interactText;
                 default: return "Mess";
             }
         }
-
-
     }
 }

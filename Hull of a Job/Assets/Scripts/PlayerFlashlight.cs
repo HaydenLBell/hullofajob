@@ -12,7 +12,7 @@ namespace cowsins
 
         private void Awake()
         {
-            if (lightSource != null) lightSource.enabled = false;
+            //if (lightSource != null) lightSource.enabled = false;
         }
 
         private void OnEnable()
