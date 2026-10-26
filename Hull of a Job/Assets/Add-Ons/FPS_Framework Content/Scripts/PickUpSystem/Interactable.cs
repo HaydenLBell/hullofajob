@@ -46,6 +46,10 @@ namespace cowsins
 
         [SaveField] public bool alreadyInteracted = false;
 
+        // Cached reference to the outline, so we only search for it once
+        private OutlineAsset outline;
+        private bool outlineSearched = false;
+
         /// <summary>
         /// Make sure to override this on your new custom class.
         /// If you still wanna call this method, make sure to write the following line:
@@ -79,9 +83,7 @@ namespace cowsins
             }
         }
 
-        // Cached reference to the outline, so we only search for it once
-        private OutlineAsset outline;
-        private bool outlineSearched = false;
+
 
         protected OutlineAsset GetOutline()
         {
