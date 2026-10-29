@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
-using cowsins;
+using hb.framework;
 using TMPro;
 using UnityEngine.UI;
 using System.Linq;

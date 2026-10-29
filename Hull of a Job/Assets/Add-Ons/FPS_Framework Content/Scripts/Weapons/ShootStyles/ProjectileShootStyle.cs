@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// When a weapon is set to Projectile Shoot Style, its shootBehaviour in WeaponIdentification is assigned to this ProjectileShootStyle.

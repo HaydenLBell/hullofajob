@@ -1,4 +1,4 @@
-namespace cowsins
+namespace hb.framework
 {
     public class WeaponStateFactory
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-namespace cowsins
+namespace hb.framework
 {
     public class PlayerMultipliers : MonoBehaviour, IPlayerMultipliers
     {
@@ -21,16 +21,19 @@ namespace cowsins
         private ModifiableStat damageMultiplier = new ModifiableStat(1);
         private ModifiableStat healMultiplier = new ModifiableStat(1);
         private ModifiableStat playerWeightMultiplier = new ModifiableStat(1);
+        private ModifiableStat damageTakenMultiplier = new ModifiableStat(1);
         
         public ModifiableStat DamageMultiplier => damageMultiplier;
         public ModifiableStat HealMultiplier => healMultiplier;
         public ModifiableStat WeightMultiplier => playerWeightMultiplier;
+        public ModifiableStat DamageTakenMultiplier => damageTakenMultiplier;
         
         private void Awake()
         {
             damageMultiplier = new ModifiableStat(1);
             healMultiplier = new ModifiableStat(1);
             playerWeightMultiplier = new ModifiableStat(1);
+            damageTakenMultiplier = new ModifiableStat(1);
         }
 
         public void AddTemporaryModifier(ModifiableStat stat, StatModifier modifier, float duration)
@@ -86,7 +89,7 @@ namespace cowsins
 }
 
 #if UNITY_EDITOR
-namespace cowsins
+namespace hb.framework
 {
     [CustomEditor(typeof(PlayerMultipliers))]
     public class PlayerMultipliersEditor : Editor

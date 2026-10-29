@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace cowsins
+namespace hb.framework
 {
     public interface IPlayerMultipliers
     {
@@ -9,6 +9,7 @@ namespace cowsins
         ModifiableStat DamageMultiplier { get; }
         ModifiableStat HealMultiplier { get; }
         ModifiableStat WeightMultiplier { get; }
+        ModifiableStat DamageTakenMultiplier { get; }
 
         void AddTemporaryModifier(ModifiableStat stat, StatModifier modifier, float duration);
         void RemoveModifierFromSource(object source);

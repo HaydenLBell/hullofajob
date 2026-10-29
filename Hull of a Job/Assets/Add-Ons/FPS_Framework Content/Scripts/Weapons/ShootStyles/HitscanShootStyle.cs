@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// When a weapon is set to Hitscan Shoot Style, its shootBehaviour in WeaponIdentification is assigned to this HitscanShootStyle.

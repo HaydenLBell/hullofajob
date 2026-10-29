@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     // Handles dash HUD Elements
     public class DashHUDModule : MonoBehaviour, IHUDModule
@@ -62,6 +62,6 @@ namespace cowsins
 }
 
 #if UNITY_EDITOR
-namespace cowsins { [UnityEditor.CustomEditor(typeof(DashHUDModule))] public class DashHUDModuleEditor : HUDModuleEditorBase { } }
+namespace hb.framework { [UnityEditor.CustomEditor(typeof(DashHUDModule))] public class DashHUDModuleEditor : HUDModuleEditorBase { } }
 #endif
 

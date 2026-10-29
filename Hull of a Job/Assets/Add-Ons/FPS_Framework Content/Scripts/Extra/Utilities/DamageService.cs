@@ -1,4 +1,4 @@
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Static service locator for damage routing.

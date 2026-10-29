@@ -8,7 +8,7 @@ using System.Collections;
 using UnityEditor;
 #endif
 
-namespace cowsins
+namespace hb.framework
 {
     public class WeaponSpecificEffects : MonoBehaviour
     {

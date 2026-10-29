@@ -5,7 +5,7 @@
 using UnityEditor;
 #endif
 #if SAVE_LOAD_ADD_ON
-using cowsins.SaveLoad;
+using hb.framework.SaveLoad;
 using System.Collections.Generic;
 #endif
 using UnityEngine;
@@ -13,7 +13,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.Events;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Super simple enemy script that allows any object with this component attached to receive damage,aim towards the player and shoot at it.

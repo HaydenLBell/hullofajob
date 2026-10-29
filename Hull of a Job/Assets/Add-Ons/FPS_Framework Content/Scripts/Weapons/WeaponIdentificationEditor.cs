@@ -5,7 +5,7 @@ using UnityEditor.Animations;
 using UnityEditor.AnimatedValues;
 using System.Collections.Generic;
 
-namespace cowsins
+namespace hb.framework
 {
     [CustomEditor(typeof(WeaponIdentification))]
     [InitializeOnLoad]

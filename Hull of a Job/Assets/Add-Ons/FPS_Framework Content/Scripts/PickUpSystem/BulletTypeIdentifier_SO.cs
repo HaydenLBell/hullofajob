@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     [CreateAssetMenu(fileName = "newBulletsInventoryItem", menuName = "COWSINS/FPS ENGINE/New Bullet Identifier", order = 1)]
     public class BulletTypeIdentifier_SO : Item_SO

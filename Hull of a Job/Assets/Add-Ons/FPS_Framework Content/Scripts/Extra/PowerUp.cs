@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-namespace cowsins
+namespace hb.framework
 {
     public class PowerUp : Trigger
     {

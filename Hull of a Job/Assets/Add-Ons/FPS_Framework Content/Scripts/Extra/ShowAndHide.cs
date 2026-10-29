@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-namespace cowsins
+namespace hb.framework
 {
     public class ShowAndHide : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace cowsins.Settings
+namespace hb.framework.Settings
 {
     // Base class for organizing settings into categories
     public abstract class SettingsCategory

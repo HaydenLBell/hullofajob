@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace cowsins
+namespace hb.framework
 {
     [CustomEditor(typeof(UIManager))]
     public class UIManagerEditor : Editor

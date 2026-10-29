@@ -1,7 +1,7 @@
 using System;
 using UnityEngine.Events;
 
-namespace cowsins
+namespace hb.framework
 {
     // Implemented by PlayerStats and required by PlayerDependencies
     public interface IPlayerStatsProvider
@@ -28,5 +28,6 @@ namespace cowsins
     {
         public UnityEvent<IPlayerStatsProvider> OnInitializeHealth = new UnityEvent<IPlayerStatsProvider>();
         public UnityEvent<float, float, bool> OnHealthChanged = new UnityEvent<float, float, bool>();
+        public UnityEvent<float> OnDamageTaken = new UnityEvent<float>();
     }
 }

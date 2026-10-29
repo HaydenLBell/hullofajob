@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 #endif
 using UnityEngine;
 using TMPro;
-namespace cowsins
+namespace hb.framework
 {
     public class DisplayKey : MonoBehaviour
     {

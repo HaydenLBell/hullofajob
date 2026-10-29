@@ -6,7 +6,7 @@ using System.Collections;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-namespace cowsins
+namespace hb.framework
 {
     public class WeaponEffects : MonoBehaviour
     {

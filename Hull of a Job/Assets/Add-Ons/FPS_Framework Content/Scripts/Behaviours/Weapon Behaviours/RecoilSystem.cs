@@ -1,7 +1,7 @@
-using cowsins;
+using hb.framework;
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     public class RecoilSystem
     {
@@ -21,6 +21,14 @@ namespace cowsins
         public float recoilYawOffset { get; private set; }
         private bool shotTriggered = false;
 
+        // Time without shots after which the camera starts returning to its pre-recoil aim
+        private const float RecoveryDelay = 0.2f;
+        private float lastShotTime = float.NegativeInfinity;
+
+        // Without a weapon there is nothing left to kick, so any leftover recoil is always recovered
+        public bool IsRecovering => (weapon == null || weapon.recoverRecoil) && Time.time - lastShotTime > RecoveryDelay;
+        public float RecoverySpeed => weapon != null ? weapon.recoilRelaxSpeed : 5f;
+
         public RecoilSystem(WeaponContext context)
         {
             this.weaponContext = context;
@@ -38,7 +46,7 @@ namespace cowsins
         public void Tick()
         {
             // Relax back to 0 if weapon is null or the current weapon does not apply recoil
-            if (weapon == null || !weapon.applyRecoil || id.bulletsLeftInMagazine <= 0)
+            if (weapon == null || !weapon.applyRecoil || id == null || id.bulletsLeftInMagazine <= 0)
             {
                 recoilPitchOffset = Mathf.Lerp(recoilPitchOffset, 0, 3 * Time.deltaTime);
                 recoilYawOffset = Mathf.Lerp(recoilYawOffset, 0, 3 * Time.deltaTime);
@@ -102,10 +110,11 @@ namespace cowsins
         }
         public void ProgressRecoil()
         {
-            if (weapon.applyRecoil)
+            if (weapon != null && weapon.applyRecoil)
             {
                 evaluationProgress += 1f / weapon.magazineSize;
                 shotTriggered = true;
+                lastShotTime = Time.time;
             }
         }
     }

@@ -1,7 +1,7 @@
-using cowsins.Settings;
+using hb.framework.Settings;
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     public class CameraLookBehaviour
     {
@@ -19,6 +19,10 @@ namespace cowsins
         private float cameraPitch;
         private float cameraYaw;
         private float cameraRoll;
+
+        // recoil rotation (degrees) currently applied to the camera and not yet compensated
+        private float recoilPitchApplied;
+        private float recoilYawApplied;
 
         // Controls the current sensitivity.
         // Sensitivity can be overrided by the Game Settings Manager
@@ -77,9 +81,31 @@ namespace cowsins
             float mouseY = rawMouseY * sensitivityMultiplier;
 
             // Calculate new yaw rotation ( around the y axis )
-            cameraYaw = camera.rotation.eulerAngles.y + mouseX + weaponRecoil.RecoilYawOffset * Time.deltaTime;
+            // Recoil only kicks while firing. Once it stops, the accumulated kick is recovered instead
+            bool recovering = weaponRecoil.IsRecoilRecovering;
+            float yawKick = recovering ? 0f : weaponRecoil.RecoilYawOffset * Time.deltaTime;
+            float pitchKick = recovering ? 0f : weaponRecoil.RecoilPitchOffset * Time.deltaTime;
+
+            // Input opposing the accumulated recoil counts as manual compensation, so it must not be recovered twice
+            recoilYawApplied = Compensate(recoilYawApplied, mouseX);
+            recoilPitchApplied = Compensate(recoilPitchApplied, -mouseY);
+
+            recoilYawApplied += yawKick;
+            recoilPitchApplied += pitchKick;
+
+            float yawRecovery = 0f, pitchRecovery = 0f;
+            if (recovering)
+            {
+                float t = 1f - Mathf.Exp(-weaponRecoil.RecoilRecoverySpeed * Time.deltaTime);
+                yawRecovery = recoilYawApplied * t;
+                pitchRecovery = recoilPitchApplied * t;
+                recoilYawApplied -= yawRecovery;
+                recoilPitchApplied -= pitchRecovery;
+            }
+
+            cameraYaw = camera.rotation.eulerAngles.y + mouseX + yawKick - yawRecovery;
             //Rotate Camera Pitch ( around x axis )
-            cameraPitch -= mouseY - weaponRecoil.RecoilPitchOffset * Time.deltaTime;
+            cameraPitch += -mouseY + pitchKick - pitchRecovery;
             // Make sure we dont over- or under-rotate.
             // The reason why the value is 89.7 instead of 90 is to prevent errors with the wallrun
             cameraPitch = Mathf.Clamp(cameraPitch, -playerSettings.maxCameraAngle, playerSettings.maxCameraAngle);
@@ -89,6 +115,13 @@ namespace cowsins
             ApplyCameraRotation();
 
             HandleAimAssist();
+        }
+
+        // Reduces the accumulated recoil by the part of the player input that opposes it
+        private static float Compensate(float applied, float input)
+        {
+            if (applied * input >= 0f) return applied;
+            return applied > 0f ? Mathf.Max(0f, applied + input) : Mathf.Min(0f, applied + input);
         }
 
         public void VerticalLook()

@@ -5,10 +5,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
 #if INVENTORY_PRO_ADD_ON
-using cowsins.Inventory;
+using hb.framework.Inventory;
 #endif
 
-namespace cowsins
+namespace hb.framework
 {
     public class InteractManager : MonoBehaviour, IInteractManagerProvider, IInteractEventsProvider
     {
@@ -221,19 +221,14 @@ namespace cowsins
             // However if we detected an interactable + we pressing the interact button, then: 
             if (inputManager.Interacting)
             {
-                // Use this object's hold time if it has one, otherwise the global default
-                float required = highlightedInteractable.HoldTimeOverride >= 0f
-                    ? highlightedInteractable.HoldTimeOverride
-                    : progressRequiredToInteract;
-
                 progressElapsed += Time.deltaTime;
-                if (required > 0)
+                if (progressRequiredToInteract > 0)
                 {
-                    Events.OnInteractionProgressChanged?.Invoke(progressElapsed / required);
+                    Events.OnInteractionProgressChanged?.Invoke(progressElapsed / progressRequiredToInteract);
                 }
 
                 // Interact
-                if (progressElapsed >= required || highlightedInteractable.InstantInteraction && progressElapsed > 0) PerformInteraction();
+                if (progressElapsed >= progressRequiredToInteract || highlightedInteractable.InstantInteraction && progressElapsed > 0) PerformInteraction();
             }
             else
             {

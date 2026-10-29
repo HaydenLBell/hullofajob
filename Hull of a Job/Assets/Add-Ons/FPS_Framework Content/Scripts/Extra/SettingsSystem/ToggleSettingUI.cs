@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace cowsins.Settings.UI
+namespace hb.framework.Settings.UI
 {
     // UI Controller for toggle settings
     public class ToggleSettingUI : SettingUIController

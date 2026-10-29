@@ -8,7 +8,7 @@ using UnityEditor;
 using UnityEngine;
 using TMPro;
 using System.Text;
-namespace cowsins
+namespace hb.framework
 {
     public class GetGameInformation : MonoBehaviour, IHUDModule
     {

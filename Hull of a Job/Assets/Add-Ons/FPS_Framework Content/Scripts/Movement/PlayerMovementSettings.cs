@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace cowsins
+namespace hb.framework
 {
     [System.Serializable]
     public class PlayerMovementSettings

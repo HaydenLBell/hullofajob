@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-namespace cowsins
+namespace hb.framework
 {
     // Handles combat events such as the Killfeed, Hitmarkers, and Damage Pop-Ups
     public class CombatEventsHUDModule : MonoBehaviour, IHUDModule
@@ -85,7 +85,7 @@ namespace cowsins
 }
 
 #if UNITY_EDITOR
-namespace cowsins 
+namespace hb.framework
 {
     [UnityEditor.CustomEditor(typeof(CombatEventsHUDModule))]
     public class CombatEventsHUDModuleEditor : HUDModuleEditorBase

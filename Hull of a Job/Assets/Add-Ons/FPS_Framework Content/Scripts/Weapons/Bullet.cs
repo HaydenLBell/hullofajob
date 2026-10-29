@@ -3,7 +3,7 @@
 /// </summary>using UnityEngine;
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     public class Bullet : MonoBehaviour, IBullet
     {

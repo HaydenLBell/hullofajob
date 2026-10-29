@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-namespace cowsins
+namespace hb.framework
 {
     public class PauseMenu : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Centralized System for all attachment operations for a specific weapon

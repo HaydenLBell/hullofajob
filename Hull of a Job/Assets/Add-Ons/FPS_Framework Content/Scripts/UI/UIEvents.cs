@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Handles events for the UI. These can be called anywhere.

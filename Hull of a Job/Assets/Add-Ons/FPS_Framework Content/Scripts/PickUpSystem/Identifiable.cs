@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 #endif
 
-namespace cowsins
+namespace hb.framework
 {
     public class Identifiable : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections; 
 
-namespace cowsins
+namespace hb.framework
 {
     public class MeleeState : WeaponBaseState
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace cowsins
+namespace hb.framework
 {
     public class StaminaHUDModule : MonoBehaviour, IHUDModule
     {
@@ -50,5 +50,5 @@ namespace cowsins
 }
 
 #if UNITY_EDITOR
-namespace cowsins { [UnityEditor.CustomEditor(typeof(StaminaHUDModule))] public class StaminaHUDModuleEditor : HUDModuleEditorBase { } }
+namespace hb.framework { [UnityEditor.CustomEditor(typeof(StaminaHUDModule))] public class StaminaHUDModuleEditor : HUDModuleEditorBase { } }
 #endif

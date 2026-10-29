@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// This class handles the UI element for attachments, which is clickable and can be used to equip, or drop attachments.

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     [System.Serializable]
     public class DefaultAttachment

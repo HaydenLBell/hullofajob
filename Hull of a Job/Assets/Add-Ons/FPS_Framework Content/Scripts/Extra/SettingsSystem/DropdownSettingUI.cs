@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-namespace cowsins.Settings.UI
+namespace hb.framework.Settings.UI
 {
     // UI Controller for dropdown settings
     public class DropdownSettingUI : SettingUIController

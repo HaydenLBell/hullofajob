@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Introduced in 1.3.8. Orientation used to be a Transform in the scene that rotated around the y axis ( yaw ). 

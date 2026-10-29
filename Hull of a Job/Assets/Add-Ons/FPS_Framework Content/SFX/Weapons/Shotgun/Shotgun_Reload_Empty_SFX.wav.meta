@@ -24,6 +24,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 218594
   packageName: FPS Engine
-  packageVersion: 1.6.1
-  assetPath: Assets/Cowsins/SFX/Weapons/Shotgun/Shotgun_Reload_Empty_SFX.wav
-  uploadId: 1019066
+  packageVersion: 1.6.2
+  assetPath: Assets/Add-Ons/FPS_Framework Content/SFX/Weapons/Shotgun/Shotgun_Reload_Empty_SFX.wav
+  uploadId: 1032568

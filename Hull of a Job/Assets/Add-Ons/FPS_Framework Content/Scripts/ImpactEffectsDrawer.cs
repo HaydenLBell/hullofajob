@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 
-namespace cowsins
+namespace hb.framework
 {
     [CustomPropertyDrawer(typeof(WeaponControllerSettings.ImpactEffects))]
     public class ImpactEffectsDrawer : PropertyDrawer

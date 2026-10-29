@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace cowsins
+namespace hb.framework
 {
     public abstract class PlayerBaseState
     {

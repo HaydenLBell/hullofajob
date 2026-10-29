@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 
-namespace cowsins.Settings
+namespace hb.framework.Settings
 {
     /// <summary>
     /// Abstract base class for all settings with common functionalities

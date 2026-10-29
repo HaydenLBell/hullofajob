@@ -2,7 +2,7 @@ using UnityEngine;
 #if INVENTORY_PRO_ADD_ON
 using cowsins.Inventory;
 #endif
-namespace cowsins
+namespace hb.framework
 {
     [CreateAssetMenu(fileName = "NewAttachmentIdentifier", menuName = "COWSINS/FPS ENGINE/New Attachment Identifier", order = 2)]
     public class AttachmentIdentifier_SO : Item_SO
@@ -22,6 +22,8 @@ namespace cowsins
 #if INVENTORY_PRO_ADD_ON
         public override void Use(InventoryProManager inventoryProManager, InventorySlot slot)
         {
+            if (inventoryProManager == null || slot == null || inventoryProManager._WeaponController == null) return;
+
             if (inventoryProManager._WeaponController.Id == null) 
             {
                 ToastManager.Instance?.ShowToast(ToastManager.Instance.AttachmentNotCompatibleMsg);
@@ -35,7 +37,18 @@ namespace cowsins
                 return;
             }
             inventoryProManager._WeaponController.attachmentsSystem.AssignAttachmentToWeapon(attachment, inventoryProManager._WeaponController.CurrentWeaponIndex);
-            inventoryProManager._GridGenerator.Operations.ClearSlotArea(slot);
+
+            InventorySlot anchor = slot.GetAnchorSlot() ?? slot;
+            bool affectsWeight = anchor.Policy != null && anchor.Policy.AffectsPlayerWeight;
+            if (affectsWeight)
+                inventoryProManager._GridGenerator?.WeightCalculator?.UpdateCurrentWeight(this, -1);
+
+            if (inventoryProManager._GridGenerator?.Operations != null)
+                inventoryProManager._GridGenerator.Operations.ClearSlotArea(anchor);
+            else
+                anchor.ClearSlot();
+
+            anchor.Policy?.OnItemRemoved(anchor, inventoryProManager);
         }
 #endif
     }

@@ -1,4 +1,4 @@
-namespace cowsins
+namespace hb.framework
 {
     // Implemented by PlayerStats and required by PlayerDependencies
     public interface IFallHeightProvider

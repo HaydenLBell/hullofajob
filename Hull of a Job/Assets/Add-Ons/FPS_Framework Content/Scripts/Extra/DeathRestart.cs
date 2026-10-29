@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-namespace cowsins
+namespace hb.framework
 {
     public class DeathRestart : MonoBehaviour
     {

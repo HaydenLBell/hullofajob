@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
 
-namespace cowsins
+namespace hb.framework
 {
     public class RebindUI : MonoBehaviour
     {

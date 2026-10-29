@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Forwards damage from a child collider hierarchy (like PlayerGraphics) to the actual PlayerStats.

@@ -3,7 +3,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace cowsins
+namespace hb.framework
 {
     [CustomEditor(typeof(Turret))]
     public class TurretEditor : Editor

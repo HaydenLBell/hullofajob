@@ -3,7 +3,7 @@
 /// </summary>
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Inheriting from destructible, lets you explode barrels

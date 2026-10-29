@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     // Called when a weapon is unholstered.
     public class WeaponUnholsterState : WeaponBaseState

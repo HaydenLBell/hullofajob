@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-namespace cowsins
+namespace hb.framework
 {
     public class CompassElement : MonoBehaviour
     {

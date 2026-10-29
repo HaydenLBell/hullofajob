@@ -1,6 +1,6 @@
 #if UNITY_EDITOR
 using UnityEditor;
-namespace cowsins
+namespace hb.framework
 {
     [CustomEditor(typeof(CrosshairShape))]
     public class CrosshairShapeEditor : Editor

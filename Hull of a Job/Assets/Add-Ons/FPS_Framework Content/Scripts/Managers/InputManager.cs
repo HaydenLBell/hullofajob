@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using System;
 using TMPro;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Manages player inputs and broadcasts them to other scripts.
@@ -62,7 +62,6 @@ namespace cowsins
             dashHandler = ctx => OnDash?.Invoke();
             inspectHandler = ctx => OnInspect?.Invoke();
             meleeHandler = ctx => OnMelee?.Invoke();
-            //meleeHandler = ctx => OnToggleFlashlight?.Invoke();
             flashlightHandler = ctx => OnToggleFlashlight?.Invoke();
             grappleStartHandler = ctx => OnStartGrapple?.Invoke();
             grappleStopHandler = ctx => OnStopGrapple?.Invoke();

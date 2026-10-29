@@ -315,11 +315,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50270bf9b1e3cb248bf251576baa1135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::cowsins.MessInteractable
-  uniqueID: 15d5cd51-e1de-410a-96f0-022a3880219c
+  uniqueID: 280fff96-954d-4ae0-bd84-052a7a55387d
   interactable: 0
   interactText: 
   instantInteraction: 0
   holdTimeOverride: -1
+  hideOnInteract: 0
   interactableEvents:
     OnInteract:
       m_PersistentCalls:
@@ -330,6 +331,9 @@ MonoBehaviour:
   requiredWeapon: {fileID: 0}
   missingWeaponText: Needs Mop!
   missingWeaponColor: {r: 1, g: 0, b: 0, a: 1}
+  canCleanOutlineColor: {r: 1, g: 1, b: 1, a: 1}
+  missingWeaponOutlineColor: {r: 0.55, g: 0.55, b: 0.55, a: 1}
+  repeatable: 0
 --- !u!1 &7826978797002958864
 GameObject:
   m_ObjectHideFlags: 0

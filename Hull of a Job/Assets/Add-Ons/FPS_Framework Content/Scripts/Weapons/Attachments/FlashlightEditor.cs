@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Simple Editor script for the Flashlight.

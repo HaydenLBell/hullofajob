@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace cowsins
+namespace hb.framework
 {
 
     /// <summary>

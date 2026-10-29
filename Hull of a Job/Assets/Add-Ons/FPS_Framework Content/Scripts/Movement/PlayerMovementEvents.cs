@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace cowsins
+namespace hb.framework
 {
     public class PlayerMovementEvents
     {

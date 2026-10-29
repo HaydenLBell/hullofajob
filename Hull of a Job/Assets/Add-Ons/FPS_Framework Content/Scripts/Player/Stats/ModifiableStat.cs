@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace cowsins
+namespace hb.framework
 {
     public class ModifiableStat
     {

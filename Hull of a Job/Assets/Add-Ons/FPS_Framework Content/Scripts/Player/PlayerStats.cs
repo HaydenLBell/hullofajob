@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 
-namespace cowsins
+namespace hb.framework
 {
     [System.Serializable]
     [DefaultExecutionOrder(10)]
@@ -117,11 +117,15 @@ namespace cowsins
             if (player != null && player.IsDashing && player.DamageProtectionWhileDashing)
                 return;
 
-            // Ensure damage is a positive value
-            float damage = Mathf.Abs(_damage);
+            if (multipliers == null && playerDependencies != null) multipliers = playerDependencies.PlayerMultipliers;
+
+            // Ensure damage is a positive value and apply incoming damage multiplier
+            float incomingMultiplier = multipliers != null ? Mathf.Max(0f, multipliers.DamageTakenMultiplier.Value) : 1f;
+            float damage = Mathf.Abs(_damage * incomingMultiplier);
 
             // Trigger damage event
             userEvents.OnDamage.Invoke();
+            Events.OnDamageTaken?.Invoke(damage);
 
             // Apply damage to shield first
             if (damage <= shield)

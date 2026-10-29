@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace cowsins
+/*namespace hb.framework
 {
     [InitializeOnLoad]
     public class CustomTabEditorWindow : EditorWindow
@@ -208,5 +208,5 @@ namespace cowsins
             return texture;
         }
     }
-}
+}*/
 #endif

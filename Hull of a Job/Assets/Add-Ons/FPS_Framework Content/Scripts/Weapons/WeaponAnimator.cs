@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     public class WeaponAnimator : MonoBehaviour
     {

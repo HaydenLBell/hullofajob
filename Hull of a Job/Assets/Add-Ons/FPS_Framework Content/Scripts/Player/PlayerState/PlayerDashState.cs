@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-namespace cowsins
+namespace hb.framework
 {
     public class PlayerDashState : PlayerBaseState
     {

@@ -2,7 +2,7 @@
 /// This script belongs to cowsinsT as a part of the cowsins FPS Engine. All rights reserved. 
 /// </summary>
 using UnityEngine;
-namespace cowsins
+namespace hb.framework
 {
     public class DamageMultiplier : PowerUp
     {

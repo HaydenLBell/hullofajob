@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     // Implemented by WeaponController and required by PlayerDependencies
     public interface IWeaponReferenceProvider
@@ -32,6 +32,9 @@ namespace cowsins
     {
         float RecoilPitchOffset { get; }
         float RecoilYawOffset { get; }
+        /// <summary>True once the weapon stopped kicking and the camera should return to its pre-recoil aim.</summary>
+        bool IsRecoilRecovering { get; }
+        float RecoilRecoverySpeed { get; }
     }
     public interface IWeaponEventsProvider
     {

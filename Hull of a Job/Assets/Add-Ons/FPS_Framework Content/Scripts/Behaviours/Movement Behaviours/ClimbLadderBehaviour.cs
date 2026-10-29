@@ -1,6 +1,6 @@
-using cowsins;
+using hb.framework;
 using UnityEngine;
-using static cowsins.PlayerMovementSettings;
+using static hb.framework.PlayerMovementSettings;
 
 public class ClimbLadderBehaviour
 {

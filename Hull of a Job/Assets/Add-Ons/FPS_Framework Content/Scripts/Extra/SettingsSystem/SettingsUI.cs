@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace cowsins.Settings.UI
+namespace hb.framework.Settings.UI
 {
     // Base class for UI controllers that bind to settings
     public abstract class SettingUIController : MonoBehaviour

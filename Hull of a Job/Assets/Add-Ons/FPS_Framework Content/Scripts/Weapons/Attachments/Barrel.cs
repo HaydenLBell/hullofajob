@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace cowsins
+namespace hb.framework
 {
     public class Barrel : Attachment
     {

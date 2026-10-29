@@ -4,7 +4,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
-namespace cowsins
+namespace hb.framework
 {
     public class CheckPointView : MonoBehaviour
     {

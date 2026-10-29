@@ -6,7 +6,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace cowsins
+namespace hb.framework
 {
     [System.Serializable]
     [CustomEditor(typeof(PlayerMovement))]

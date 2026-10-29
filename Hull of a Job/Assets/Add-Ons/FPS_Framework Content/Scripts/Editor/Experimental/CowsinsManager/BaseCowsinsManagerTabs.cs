@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace cowsins
+namespace hb.framework
 {
     public class HomeTab : ITab
     {
@@ -130,6 +130,9 @@ namespace cowsins
             GUILayout.BeginVertical();
             GUILayout.Label("More by Cowsins", CowsinsEditorWindowUtilities.BigHeadingStyle(), GUILayout.Height(30));
 
+            PackageCard(Resources.Load<Texture2D>("CustomEditor/CowsinsManager/MultiplayerAddOnThumbnail"), "Multiplayer Add-On",
+                "The definitive solution to bring your game online! Add multiplayer to FPS Engine with seamless Mirror networking, pre-built game modes, Steam & LAN support & much more!",
+                "https://assetstore.unity.com/packages/templates/systems/multiplayer-add-on-for-fps-engine-414072", "FPS Engine Official Add-On", "", Color.green, Color.grey);
             PackageCard(Resources.Load<Texture2D>("CustomEditor/CowsinsManager/InventorySaveLoadAddOnThumbnail"), "Inventory Pro + Save & Load", 
                 "The definitive solution to add Advanced systems like Inventories, Chests, Shops, Crafting, Save & Load & much more in FPS Engine!",
                 "https://assetstore.unity.com/packages/templates/systems/inventory-pro-add-on-for-fps-engine-318131", "FPS Engine Official Add-On","", Color.green, Color.grey);

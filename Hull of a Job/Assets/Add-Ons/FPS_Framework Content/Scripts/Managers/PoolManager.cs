@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEditor;
 #endif
 
-namespace cowsins
+namespace hb.framework
 {
     public class PoolManager : MonoBehaviour
     {
@@ -180,7 +180,7 @@ namespace cowsins
 }
 
 #if UNITY_EDITOR
-namespace cowsins
+namespace hb.framework
 {
 
     [CustomEditor(typeof(PoolManager))]

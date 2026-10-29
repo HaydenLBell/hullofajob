@@ -5,7 +5,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEditor;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Attach this to your weapon object ( the one that goes in the weapon array of WeaponController )

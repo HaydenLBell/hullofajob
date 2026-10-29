@@ -467,11 +467,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eeb544160b1d7148a8e850388154f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueID: 5d2b0159-37dd-4e60-95d0-812a78726d7f
+  uniqueID: 7a5fd067-f7c6-417a-a33c-533f88c9c5b2
   interactable: 0
   interactText: Open
   instantInteraction: 0
   holdTimeOverride: -1
+  hideOnInteract: 0
   interactableEvents:
     OnInteract:
       m_PersistentCalls:
@@ -654,7 +655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 046df2f4f16921442b775829d739e8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::cowsins.Repairable
-  uniqueID: 9134d378-be05-4345-885e-7e5c830e66c6
+  uniqueID: 913ec322-7ad0-4a0c-b0da-44440d725e73
   _name: 
   health: 5
   shield: 0

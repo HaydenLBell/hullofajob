@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-namespace cowsins
+namespace hb.framework
 {
     // Handles weapon HUD elements like ammo, magazine, heat, and currently equipped weapon icon
     public class WeaponHUDModule : MonoBehaviour, IHUDModule
@@ -113,6 +113,6 @@ namespace cowsins
 }
 
 #if UNITY_EDITOR
-namespace cowsins { [UnityEditor.CustomEditor(typeof(WeaponHUDModule))] public class WeaponHUDModuleEditor : HUDModuleEditorBase { } }
+namespace hb.framework { [UnityEditor.CustomEditor(typeof(WeaponHUDModule))] public class WeaponHUDModuleEditor : HUDModuleEditorBase { } }
 #endif
 

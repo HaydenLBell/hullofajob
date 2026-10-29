@@ -3,7 +3,7 @@ using UnityEditor.Presets;
 #endif
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     [System.Serializable]
     public class CrosshairParts

@@ -1,7 +1,7 @@
 ﻿#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
-namespace cowsins
+namespace hb.framework
 {
     [InitializeOnLoad]
     public class Unity6EditorWindow : EditorWindow

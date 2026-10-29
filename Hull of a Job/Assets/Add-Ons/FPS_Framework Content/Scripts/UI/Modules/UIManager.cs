@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Coordinates HUD modules, discovers them and initializes them with PlayerDependencies.

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Service for full-screen color flash effects

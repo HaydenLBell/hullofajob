@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     // Handles weapon inventory UI
     public class InventoryHUDModule : MonoBehaviour, IHUDModule
@@ -128,6 +128,6 @@ namespace cowsins
 }
 
 #if UNITY_EDITOR
-namespace cowsins { [UnityEditor.CustomEditor(typeof(InventoryHUDModule))] public class InventoryHUDModuleEditor : HUDModuleEditorBase { } }
+namespace hb.framework { [UnityEditor.CustomEditor(typeof(InventoryHUDModule))] public class InventoryHUDModuleEditor : HUDModuleEditorBase { } }
 #endif
 

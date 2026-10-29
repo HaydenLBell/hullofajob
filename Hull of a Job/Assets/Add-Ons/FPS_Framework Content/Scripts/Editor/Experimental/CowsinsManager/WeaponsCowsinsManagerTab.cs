@@ -5,7 +5,7 @@ using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace cowsins
+namespace hb.framework
 {
     public class WeaponsTab : ITab
     {

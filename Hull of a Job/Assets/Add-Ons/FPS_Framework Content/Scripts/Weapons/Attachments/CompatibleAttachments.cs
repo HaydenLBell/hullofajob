@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Stores the compatible attachments of a WeaponIdentification object.

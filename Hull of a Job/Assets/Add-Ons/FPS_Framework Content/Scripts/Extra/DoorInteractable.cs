@@ -1,9 +1,6 @@
-/// <summary>
-/// This script belongs to cowsins™ as a part of the cowsins´ FPS Engine. All rights reserved. 
-/// </summary>
 using UnityEngine;
 using System.Collections;
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Inheriting from Interactable, this means you can interact with the door

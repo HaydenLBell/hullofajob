@@ -8,7 +8,7 @@ using cowsins.SaveLoad;
 using System.Collections.Generic;
 #endif
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// This component must be add to ANY destructible object in your environment.

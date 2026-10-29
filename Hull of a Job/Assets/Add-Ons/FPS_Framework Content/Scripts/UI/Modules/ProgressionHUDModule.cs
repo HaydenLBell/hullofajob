@@ -3,7 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-namespace cowsins
+namespace hb.framework
 {
     // Handles progression HUD elements such as Experience Bar, Levels and Coins
     public class ProgressionHUDModule : MonoBehaviour, IHUDModule
@@ -96,6 +96,6 @@ namespace cowsins
 }
 
 #if UNITY_EDITOR
-namespace cowsins { [UnityEditor.CustomEditor(typeof(ProgressionHUDModule))] public class ProgressionHUDModuleEditor : HUDModuleEditorBase { } }
+namespace hb.framework { [UnityEditor.CustomEditor(typeof(ProgressionHUDModule))] public class ProgressionHUDModuleEditor : HUDModuleEditorBase { } }
 #endif
 

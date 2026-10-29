@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace cowsins
+namespace hb.framework
 {
     public class TrainingTarget : EnemyHealth
     {
@@ -36,7 +36,7 @@ namespace cowsins
 
             animator.Play("Target_Die");
 
-            SoundManager.Instance.PlaySound(dieSFX, 0, 0, false);
+            if (playDieSFX) SoundManager.Instance.PlaySound(dieSFX, 0, 0, false);
         }
         private new void Revive()
         {

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
-namespace cowsins
+namespace hb.framework
 {
     public class Compass : MonoBehaviour, IHUDModule
     {
@@ -95,5 +95,5 @@ namespace cowsins
 }
 
 #if UNITY_EDITOR
-namespace cowsins { [UnityEditor.CustomEditor(typeof(Compass))] public class CompassEditor : HUDModuleEditorBase { } }
+namespace hb.framework { [UnityEditor.CustomEditor(typeof(Compass))] public class CompassEditor : HUDModuleEditorBase { } }
 #endif

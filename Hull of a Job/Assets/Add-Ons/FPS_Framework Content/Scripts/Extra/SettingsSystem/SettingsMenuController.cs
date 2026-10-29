@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 
-namespace cowsins.Settings.UI
+namespace hb.framework.Settings.UI
 {
     // Main settings menu controller
     public class SettingsMenuController : MonoBehaviour

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 /// <summary>
 /// This simplifies migration from another project by eliminating the need to manually update tags and layers.
 /// </summary>
-namespace cowsins.Inspector
+namespace hb.framework.Inspector
 {
     [InitializeOnLoad]
     public class TagLayerInitializationManager

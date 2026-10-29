@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     [InitializeOnLoad]
     public static class DraggableButtonInSceneView
@@ -107,7 +107,7 @@ namespace cowsins
 
             if (GUI.Button(new Rect(GetButtonPosition(menuRect, 2), menuRect.y, itemWidth, itemHeight), option3Content))
             {
-                CustomTabEditorWindow.OpenWeaponsTab();
+                //CustomTabEditorWindow.OpenWeaponsTab();
             }
 
             if (GUI.Button(new Rect(GetButtonPosition(menuRect, 3), menuRect.y, itemWidth, itemHeight), option4Content))

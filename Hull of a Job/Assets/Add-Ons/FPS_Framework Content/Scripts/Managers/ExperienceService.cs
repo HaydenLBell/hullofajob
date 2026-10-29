@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     [System.Serializable]
     public class ExperienceService

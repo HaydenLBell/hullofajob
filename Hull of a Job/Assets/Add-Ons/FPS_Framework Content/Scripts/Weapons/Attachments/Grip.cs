@@ -1,5 +1,5 @@
 
-namespace cowsins
+namespace hb.framework
 {
     public class Grip : Attachment
     {

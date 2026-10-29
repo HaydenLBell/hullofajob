@@ -5,7 +5,7 @@
 using UnityEditor;
 #endif
 #if SAVE_LOAD_ADD_ON
-using cowsins.SaveLoad;
+using hb.framework.SaveLoad;
 using System.Collections.Generic;
 #endif
 using UnityEngine;
@@ -13,7 +13,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.Events;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Super simple enemy script that allows any object with this component attached to receive damage,aim towards the player and shoot at it.
@@ -32,8 +32,8 @@ namespace cowsins
 
         public string Name => _name;
 
-        [SaveField] public float health;
-        [SaveField] public float shield;
+        [ReadOnly, SaveField] public float health;
+        [ReadOnly, SaveField] public float shield;
 
         public float Health => health;
         public float Shield => shield;
@@ -67,6 +67,21 @@ namespace cowsins
         [SerializeField]
         protected AudioClip dieSFX;
 
+        [Tooltip("If true, plays dieSFX when dying. Set to false in multiplayer to let killer accolade audio handle sound."), SerializeField]
+        protected bool playDieSFX = true;
+
+        public bool PlayDieSFX
+        {
+            get => playDieSFX;
+            set => playDieSFX = value;
+        }
+
+        public AudioClip DieSFX
+        {
+            get => dieSFX;
+            set => dieSFX = value;
+        }
+
         public Events events;
 
         protected bool isDead;
@@ -82,8 +97,8 @@ namespace cowsins
         public virtual void Start()
         {
             // Status initial settings
-            //health = maxHealth;
-            //shield = maxShield;
+            health = maxHealth;
+            shield = maxShield;
 
             // Spawn
             events.OnSpawn.Invoke();
@@ -100,14 +115,21 @@ namespace cowsins
         {
             if (isDead) return;
 
-            float damage = _damage;
+            float damage = Mathf.Abs(_damage);
             float oldDmg = damage;
             bool hitShield = shield > 0;
-
-            if (isDead) return;
-
-            health = Mathf.Clamp(health - _damage, 0f, maxHealth);
-            UpdateHealthBar();
+            if (damage <= shield) // Shield will be damaged
+            {
+                shield -= damage;
+            }
+            else
+            {
+                damage = damage - shield;
+                shield = 0;
+                health -= damage;
+                UpdateHealthBar();
+            }
+            UpdateShieldBar();
 
             // Custom event on damaged
             events.OnDamaged.Invoke();
@@ -144,7 +166,7 @@ namespace cowsins
 
             if (enemyStatusContainer != null) enemyStatusContainer.SetActive(false);
 
-            SoundManager.Instance.PlaySound(dieSFX, 0, 1, false);
+            if (playDieSFX) SoundManager.Instance.PlaySound(dieSFX, 0, 1, false);
             // Does it display killfeed on death? 
             if (showKillFeed)
             {
@@ -288,6 +310,7 @@ namespace cowsins
                         EditorGUI.indentLevel--;
                     }
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("dieSFX"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("playDieSFX"));
                     EditorGUILayout.Space(6);
                     EditorGUI.indentLevel--;
                 }

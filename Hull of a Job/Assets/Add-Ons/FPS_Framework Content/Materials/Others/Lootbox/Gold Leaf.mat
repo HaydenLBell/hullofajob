@@ -120,12 +120,12 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.9063317, g: 0.6923113, b: 0.36061123, a: 1}
-    - _Color: {r: 0.9063317, g: 0.6923112, b: 0.3606112, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0.16037738, g: 0.14389606, b: 0.08548417, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &2174222920704161107
+--- !u!114 &557873215009395133
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

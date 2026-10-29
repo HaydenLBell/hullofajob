@@ -1,13 +1,10 @@
-/// <summary>
-/// This script belongs to cowsins™ as a part of the cowsins´ FPS Engine. All rights reserved. 
-/// </summary>
 using UnityEngine;
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-namespace cowsins
+namespace hb.framework
 {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(PlayerStates))]

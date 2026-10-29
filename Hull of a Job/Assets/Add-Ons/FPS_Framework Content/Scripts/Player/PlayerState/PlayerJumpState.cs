@@ -1,6 +1,6 @@
 using UnityEditor;
 using UnityEngine;
-namespace cowsins
+namespace hb.framework
 {
     public class PlayerJumpState : PlayerBaseState
     {

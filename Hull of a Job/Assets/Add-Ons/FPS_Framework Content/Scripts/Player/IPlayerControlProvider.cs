@@ -1,4 +1,4 @@
-namespace cowsins
+namespace hb.framework
 {
     // Implemented by PlayerControl and required by PlayerDependencies
     public interface IPlayerControlProvider

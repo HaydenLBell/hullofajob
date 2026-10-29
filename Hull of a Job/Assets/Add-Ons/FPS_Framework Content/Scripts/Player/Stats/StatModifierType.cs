@@ -1,6 +1,6 @@
 using System;
 
-namespace cowsins
+namespace hb.framework
 {
     public enum StatModifierType
     {

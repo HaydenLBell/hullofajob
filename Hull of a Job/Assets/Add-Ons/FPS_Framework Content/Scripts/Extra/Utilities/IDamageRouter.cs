@@ -1,4 +1,4 @@
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Routes damage requests through the appropriate channel.

@@ -3,7 +3,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     [CustomPropertyDrawer(typeof(DefaultAttachment.AttachmentEntry))]
     public class AttachmentEntryDrawer : PropertyDrawer

@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 using System;
 
-namespace cowsins
+namespace hb.framework
 {
     public class WeaponControllerEvents
     {

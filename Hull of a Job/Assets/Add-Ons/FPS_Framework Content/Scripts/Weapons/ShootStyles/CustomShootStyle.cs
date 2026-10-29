@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using System.Collections;
 using System;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// When a weapon is set to Custom Shoot Style, its shootBehaviour in WeaponIdentification is assigned to this CustomShootStyle.

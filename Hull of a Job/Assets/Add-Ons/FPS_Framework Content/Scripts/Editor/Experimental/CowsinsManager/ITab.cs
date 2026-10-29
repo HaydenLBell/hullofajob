@@ -1,5 +1,5 @@
 #if UNITY_EDITOR
-namespace cowsins
+namespace hb.framework
 {
     public interface ITab
     {

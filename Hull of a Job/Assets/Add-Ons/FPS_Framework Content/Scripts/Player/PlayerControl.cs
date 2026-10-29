@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     // This class controls the controllable state of the player.
     // If non-controllable ( controllable == false ), the player won´t be able to move or perform any action.

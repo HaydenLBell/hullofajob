@@ -1,6 +1,6 @@
 using UnityEngine.Events;
 
-namespace cowsins
+namespace hb.framework
 {
     // Implemented by InteractManager and required by PlayerDependencies
     public interface IInteractManagerProvider

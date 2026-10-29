@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-namespace cowsins
+namespace hb.framework
 {
     // HUD module responsible for displaying player health and shield
     public class HealthHUDModule : MonoBehaviour, IHUDModule
@@ -133,7 +133,7 @@ namespace cowsins
 }
 
 #if UNITY_EDITOR
-namespace cowsins 
+namespace hb.framework
 {
     [UnityEditor.CustomEditor(typeof(HealthHUDModule))]
     public class HealthHUDModuleEditor : HUDModuleEditorBase 

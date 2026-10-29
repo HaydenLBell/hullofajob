@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Interface that defines a strategy for calculating attachment group UI positions / different layout modes

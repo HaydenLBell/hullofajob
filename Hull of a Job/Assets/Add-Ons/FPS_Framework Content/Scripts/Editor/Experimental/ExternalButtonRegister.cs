@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     [InitializeOnLoad]
     public static class ExternalButtonRegister

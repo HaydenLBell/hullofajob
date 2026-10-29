@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-namespace cowsins
+namespace hb.framework
 {
     // Handles weapon attachment inspection UI: Displaying scopes, barrels...
     public class AttachmentInspectionHUDModule : MonoBehaviour, IHUDModule
@@ -187,6 +187,6 @@ namespace cowsins
 }
 
 #if UNITY_EDITOR
-namespace cowsins { [UnityEditor.CustomEditor(typeof(AttachmentInspectionHUDModule))] public class AttachmentInspectionHUDModuleEditor : HUDModuleEditorBase { } }
+namespace hb.framework { [UnityEditor.CustomEditor(typeof(AttachmentInspectionHUDModule))] public class AttachmentInspectionHUDModuleEditor : HUDModuleEditorBase { } }
 #endif
 

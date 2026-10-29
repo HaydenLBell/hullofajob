@@ -1,4 +1,4 @@
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Defines how attachment groups are displayed in the UI

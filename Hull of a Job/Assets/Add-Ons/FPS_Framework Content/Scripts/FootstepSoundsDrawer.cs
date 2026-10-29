@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 
-namespace cowsins
+namespace hb.framework
 {
     [CustomPropertyDrawer(typeof(PlayerMovementSettings.FootStepsSounds))]
     public class FootstepSoundsDrawer : PropertyDrawer

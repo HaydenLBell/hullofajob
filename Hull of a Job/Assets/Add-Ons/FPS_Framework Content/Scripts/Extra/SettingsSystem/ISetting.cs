@@ -1,6 +1,6 @@
 using System;
 
-namespace cowsins.Settings
+namespace hb.framework.Settings
 {
     // Base interface for all settings
     public interface ISetting

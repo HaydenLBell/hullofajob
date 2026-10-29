@@ -4,7 +4,7 @@
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Events;
-namespace cowsins
+namespace hb.framework
 {
     public abstract class Pickeable : Interactable
     {

@@ -2,7 +2,7 @@
 /// This script belongs to cowsins™ as a part of the cowsins´ FPS Engine. All rights reserved. 
 /// </summary>
 using UnityEngine;
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Ignore collisions with player

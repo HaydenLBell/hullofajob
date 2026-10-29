@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-namespace cowsins.Settings.UI
+namespace hb.framework.Settings.UI
 {
     public class SliderSettingUI : SettingUIController
     {

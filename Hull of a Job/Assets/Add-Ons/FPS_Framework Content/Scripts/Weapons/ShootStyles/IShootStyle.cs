@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Defines actions & Callbacks of different Shoot Styles.

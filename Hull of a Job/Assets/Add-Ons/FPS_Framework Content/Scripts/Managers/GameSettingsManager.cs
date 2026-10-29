@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace cowsins.Settings
+namespace hb.framework.Settings
 {
     public class GameSettingsManager : MonoBehaviour
     {

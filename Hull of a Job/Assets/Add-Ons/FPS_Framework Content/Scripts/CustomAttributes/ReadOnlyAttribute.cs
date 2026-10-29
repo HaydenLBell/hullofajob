@@ -3,7 +3,7 @@ using UnityEditor;
 #endif
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     public class ReadOnlyAttribute : PropertyAttribute { }
 

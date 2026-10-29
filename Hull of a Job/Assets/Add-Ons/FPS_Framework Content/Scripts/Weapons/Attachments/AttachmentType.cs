@@ -1,4 +1,4 @@
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Defines the different types of attachments that can be equipped on weapons.

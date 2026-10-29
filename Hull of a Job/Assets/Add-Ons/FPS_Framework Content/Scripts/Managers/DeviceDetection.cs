@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
-namespace cowsins
+namespace hb.framework
 {
     public class DeviceDetection : MonoBehaviour
     {

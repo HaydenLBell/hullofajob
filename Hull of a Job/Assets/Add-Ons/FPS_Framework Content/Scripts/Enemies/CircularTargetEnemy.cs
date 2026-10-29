@@ -1,10 +1,10 @@
 using UnityEngine;
-using cowsins;
+using hb.framework;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Another example of Enemy.cs inheritance.
@@ -82,7 +82,7 @@ namespace cowsins
             }
 
             col.enabled = false;
-            SoundManager.Instance.PlaySound(dieSFX, 0, 0, false);
+            if (playDieSFX) SoundManager.Instance.PlaySound(dieSFX, 0, 0, false);
             // Invoke revive method
             Invoke("Revive", timeToRevive);
         }

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Contains a collection of useful UI Effects, from Sway, to Tilt or Jump Motion.

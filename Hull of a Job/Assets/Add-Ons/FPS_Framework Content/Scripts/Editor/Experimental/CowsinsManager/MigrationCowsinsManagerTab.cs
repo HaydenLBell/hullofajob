@@ -5,7 +5,7 @@ using System;
 using System.Reflection;
 using UnityEngine.Rendering;
 
-namespace cowsins
+namespace hb.framework
 {
     public class MigrationCowsinsManagerTab : ITab
     {

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using UnityEditor.Presets;
 #endif
 
-namespace cowsins
+namespace hb.framework
 {
     [UnityEngine.Scripting.Preserve]
     public class WeaponController : MonoBehaviour, IWeaponReferenceProvider, IWeaponBehaviourProvider, IWeaponRecoilProvider, IWeaponEventsProvider
@@ -225,6 +225,8 @@ namespace cowsins
 
         public float RecoilPitchOffset => recoilSystem.recoilPitchOffset;
         public float RecoilYawOffset => recoilSystem.recoilYawOffset;
+        public bool IsRecoilRecovering => recoilSystem.IsRecovering;
+        public float RecoilRecoverySpeed => recoilSystem.RecoverySpeed;
 
         #endregion
 

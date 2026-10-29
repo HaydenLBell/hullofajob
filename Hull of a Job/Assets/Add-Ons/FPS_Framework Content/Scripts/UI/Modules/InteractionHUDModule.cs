@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
 
-namespace cowsins
+namespace hb.framework
 {
     // Handles interaction HUD elements, like prompts, Progress Bars, Forbidden Interaction...
     public class InteractionHUDModule : MonoBehaviour, IHUDModule
@@ -70,7 +70,7 @@ namespace cowsins
 
             if (allowedInteractionSFX != null && SoundManager.Instance != null)
             {
-                SoundManager.Instance.PlaySound(allowedInteractionSFX, 0, 0, false, 0.1f);
+                SoundManager.Instance.PlaySound(allowedInteractionSFX, 0, 0, false);
             }
         }
 
@@ -103,6 +103,6 @@ namespace cowsins
 }
 
 #if UNITY_EDITOR
-namespace cowsins { [UnityEditor.CustomEditor(typeof(InteractionHUDModule))] public class InteractionHUDModuleEditor : HUDModuleEditorBase { } }
+namespace hb.framework { [UnityEditor.CustomEditor(typeof(InteractionHUDModule))] public class InteractionHUDModuleEditor : HUDModuleEditorBase { } }
 #endif
 

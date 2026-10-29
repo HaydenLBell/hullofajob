@@ -1,4 +1,4 @@
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Introduced in FPS Engine 1.6. Replaces UIController with Modular HUD sections.

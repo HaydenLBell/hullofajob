@@ -1,7 +1,7 @@
 /// <summary>
 /// </summary>
 using UnityEngine;
-namespace cowsins
+namespace hb.framework
 {
     public class HealMultiplierPowerUp : PowerUp
     {

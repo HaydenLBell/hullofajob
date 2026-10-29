@@ -7,7 +7,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Basic Point Capture script

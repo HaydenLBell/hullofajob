@@ -2,7 +2,7 @@ using UnityEngine;
 #if INVENTORY_PRO_ADD_ON
 using cowsins.Inventory;
 #endif
-namespace cowsins
+namespace hb.framework
 {
     public partial class BulletsPickeable : Pickeable
     {

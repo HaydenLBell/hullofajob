@@ -3,7 +3,7 @@ using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-namespace cowsins
+namespace hb.framework
 {
     [CreateAssetMenu(fileName = "NewProceduralShot", menuName = "COWSINS/FPS ENGINE/New Procedural Shot Effect", order = 2)]
     public class ProceduralShot_SO : ScriptableObject

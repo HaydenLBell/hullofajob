@@ -1,11 +1,8 @@
-/// <summary>
-/// This script belongs to cowsins™ as a part of the cowsins´ FPS Engine. All rights reserved. 
-/// </summary>
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace cowsins
+namespace hb.framework
 {
     public class Crosshair : MonoBehaviour, IHUDModule
     {
@@ -309,5 +306,5 @@ namespace cowsins
 }
 
 #if UNITY_EDITOR
-namespace cowsins { [UnityEditor.CustomEditor(typeof(Crosshair))] public class CrosshairEditor : HUDModuleEditorBase { } }
+namespace hb.framework { [UnityEditor.CustomEditor(typeof(Crosshair))] public class CrosshairEditor : HUDModuleEditorBase { } }
 #endif

@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace cowsins
+namespace hb.framework
 {
     [CustomPropertyDrawer(typeof(CompatibleAttachments.CompatibleAttachmentEntry))]
     public class CompatibleAttachmentEntryDrawer : PropertyDrawer

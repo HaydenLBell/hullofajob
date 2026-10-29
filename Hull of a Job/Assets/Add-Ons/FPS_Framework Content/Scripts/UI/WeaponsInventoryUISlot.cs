@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// Each slot you see on your UI, which is generated depending on your inventory size, requires this component

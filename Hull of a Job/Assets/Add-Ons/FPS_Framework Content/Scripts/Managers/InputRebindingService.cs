@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using System;
 using TMPro;
 
-namespace cowsins
+namespace hb.framework
 {
     public static class InputRebindingService
     {

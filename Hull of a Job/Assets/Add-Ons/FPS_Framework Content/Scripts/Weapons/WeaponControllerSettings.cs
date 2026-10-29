@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic; 
 
-namespace cowsins
+namespace hb.framework
 {
     [System.Serializable]
     public class WeaponControllerSettings

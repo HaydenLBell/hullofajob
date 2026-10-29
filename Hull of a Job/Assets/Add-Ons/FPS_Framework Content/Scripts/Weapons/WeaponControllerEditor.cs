@@ -5,7 +5,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace cowsins
+namespace hb.framework
 {
     [System.Serializable]
     [CustomEditor(typeof(WeaponController))]

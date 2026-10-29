@@ -9,7 +9,7 @@ using UnityEditor.Animations;
 #endif
 using System.IO;
 
-namespace cowsins
+namespace hb.framework
 {
     public static class CowsinsUtilities
     {

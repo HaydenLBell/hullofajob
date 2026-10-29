@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System.Text.RegularExpressions;
-namespace cowsins
+namespace hb.framework
 {
     public static partial class CowsinsEditorWindowUtilities
     {

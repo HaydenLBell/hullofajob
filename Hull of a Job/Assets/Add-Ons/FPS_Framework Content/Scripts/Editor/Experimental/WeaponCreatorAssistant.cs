@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.Presets;
 using UnityEditor.Animations;
-namespace cowsins
+namespace hb.framework
 {
     public class WeaponCreatorAssistant : ScriptableObject
     {
@@ -29,7 +29,7 @@ namespace cowsins
         [MenuItem("Cowsins/Create/Weapon ( Weapon Creation Assistant )")]
         public static void DisplayConfirmationDialog()
         {
-            CustomTabEditorWindow.OpenWeaponsTab();
+            //CustomTabEditorWindow.OpenWeaponsTab();
         }
 
         public void OnGUI()
@@ -167,7 +167,7 @@ namespace cowsins
                 if (confirmed)
                 {
                     CreateWeapon();
-                    CustomTabEditorWindow.CloseWindow();
+                    //CustomTabEditorWindow.CloseWindow();
                 }
 
             }

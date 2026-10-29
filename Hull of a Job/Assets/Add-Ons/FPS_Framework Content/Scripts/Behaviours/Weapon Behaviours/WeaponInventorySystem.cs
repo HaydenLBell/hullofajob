@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace cowsins
+namespace hb.framework
 {
     public class WeaponInventorySystem
     {
@@ -290,9 +290,19 @@ namespace cowsins
                 weaponEvents.Events.OnAimStop?.Invoke();
             }
 
-            Object.Destroy(weaponReference.Inventory[index].gameObject);
-            weaponReference.Inventory[index] = null;
-            weaponReference.Weapon = null;
+            if (weaponReference.Inventory != null && index >= 0 && index < weaponReference.Inventory.Length && weaponReference.Inventory[index] != null)
+            {
+                if (weaponReference.Id == weaponReference.Inventory[index] || weaponReference.CurrentWeaponIndex == index)
+                    weaponReference.Id = null;
+                Object.Destroy(weaponReference.Inventory[index].gameObject);
+                weaponReference.Inventory[index] = null;
+            }
+
+            if (weaponReference.CurrentWeaponIndex == index)
+            {
+                weaponReference.Id = null;
+                weaponReference.Weapon = null;
+            }
 
             weaponEvents.Events.OnWeaponInventoryChanged?.Invoke(index, null);
             weaponEvents.Events.OnReleaseWeapon?.Invoke();

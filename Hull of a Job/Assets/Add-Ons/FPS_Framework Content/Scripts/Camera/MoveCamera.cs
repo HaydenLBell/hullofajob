@@ -1,4 +1,4 @@
-namespace cowsins
+namespace hb.framework
 {
     /// <summary>
     /// This script belongs to cowsins™ as a part of the cowsins´ FPS Engine. All rights reserved. 

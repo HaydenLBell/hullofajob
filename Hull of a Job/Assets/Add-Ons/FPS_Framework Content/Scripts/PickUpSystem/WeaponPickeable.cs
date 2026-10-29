@@ -9,7 +9,7 @@ using cowsins.Inventory;
 using cowsins.SaveLoad;
 #endif
 
-namespace cowsins
+namespace hb.framework
 {
     public partial class WeaponPickeable : Pickeable
     {

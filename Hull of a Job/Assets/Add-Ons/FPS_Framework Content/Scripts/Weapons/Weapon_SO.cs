@@ -15,7 +15,7 @@ using UnityEditor.Presets;
 using cowsins.Inventory;
 #endif
 
-namespace cowsins
+namespace hb.framework
 {
     #region enum
     /// <summary>
@@ -198,6 +198,8 @@ namespace cowsins
         public float xRecoilAmount, yRecoilAmount;
 
         public float recoilRelaxSpeed;
+
+        [Tooltip("If true the camera returns to its pre-recoil aim once you stop shooting. Aim you compensate manually is not recovered.")] public bool recoverRecoil = true;
 
         public bool applyDifferentRecoilOnAiming;
 
@@ -546,9 +548,15 @@ namespace cowsins
                                 }
                                 if (!myScript.applyWeight) myScript.weightMultiplier = 1;
                                 EndBox();   
+#if INVENTORY_PRO_ADD_ON
+                                DrawDurabilitySettings(myScript);
+#endif
                                 break;
                             case 3:
                                 DrawAimSettings(myScript);
+#if INVENTORY_PRO_ADD_ON
+                                DrawDurabilitySettings(myScript);
+#endif
                                 break;
                         }
                         break;
@@ -763,6 +771,7 @@ namespace cowsins
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("xRecoilAmount"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("yRecoilAmount"));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("recoilRelaxSpeed"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("recoverRecoil"));
                 if (myScript.allowAim)
                 {
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("applyDifferentRecoilOnAiming"));
@@ -978,7 +987,31 @@ namespace cowsins
             if (!myScript.applyWeight) myScript.weightMultiplier = 1;
 
             EndBox();
+
+#if INVENTORY_PRO_ADD_ON
+            DrawDurabilitySettings(myScript);
+#endif
         }
+
+#if INVENTORY_PRO_ADD_ON
+        private void DrawDurabilitySettings(Weapon_SO myScript)
+        {
+            BeginBox("ITEM DURABILITY");
+            var useDurabilityProp = serializedObject.FindProperty("useDurability");
+            if (useDurabilityProp != null)
+            {
+                EditorGUILayout.PropertyField(useDurabilityProp);
+                if (useDurabilityProp.boolValue)
+                {
+                    EditorGUI.indentLevel++;
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("maxDurability"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("durabilityMethod"));
+                    EditorGUI.indentLevel--;
+                }
+            }
+            EndBox();
+        }
+#endif
 
         private void WeaponVisualSharedVariables(Weapon_SO myScript)
         {

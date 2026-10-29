@@ -12,6 +12,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 [DisallowMultipleComponent]
 
 public class OutlineAsset : MonoBehaviour {
