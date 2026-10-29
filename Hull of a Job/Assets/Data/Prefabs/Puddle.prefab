@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50270bf9b1e3cb248bf251576baa1135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  uniqueID: d6d1de27-7a25-42a7-84f9-858937214853
+  uniqueID: 71d3e8b9-aafe-4fc2-b141-714364b9c636
   interactable: 0
   interactText: Clean Puddle
   instantInteraction: 0
