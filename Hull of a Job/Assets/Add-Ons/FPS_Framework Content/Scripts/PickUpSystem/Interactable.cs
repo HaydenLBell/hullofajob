@@ -27,6 +27,8 @@ namespace hb.framework
         public bool HideOnInteract => hideOnInteract;
         public bool InstantInteraction => instantInteraction;
 
+        public bool IsHighlighted { get; private set; }
+
         [System.Serializable]
         public class InteractableEvents // Store your events
         {
@@ -88,6 +90,8 @@ namespace hb.framework
 
         public virtual void Highlight(Transform player)
         {
+            IsHighlighted = true;
+
             OutlineAsset currentOutline = GetOutline();
 
             // No outline on this object, so do nothing
@@ -107,6 +111,8 @@ namespace hb.framework
 
         public virtual void Unhighlight()
         {
+            IsHighlighted = false;
+
             OutlineAsset currentOutline = GetOutline();
 
             if (currentOutline == null)

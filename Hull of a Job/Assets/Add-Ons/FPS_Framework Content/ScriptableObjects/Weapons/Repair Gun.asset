@@ -147,6 +147,7 @@ MonoBehaviour:
   xRecoilAmount: 100
   yRecoilAmount: 4
   recoilRelaxSpeed: 6
+  recoverRecoil: 1
   applyDifferentRecoilOnAiming: 1
   xRecoilAmountOnAiming: 30
   yRecoilAmountOnAiming: 2
@@ -175,7 +176,7 @@ MonoBehaviour:
     emptyMagShoot: {fileID: 8300000, guid: 5959d65463fbfe342a9219287eb7315f, type: 3}
   pitchVariationFiringSFX: 0.122
   grapplesFromTip: 0
-  camShakeAmount: 0
+  camShakeAmount: 0.0125
   camShakeAimMultiplier: 0
   camShakeCrouchMultiplier: 0
   applyFOVEffectOnShooting: 0

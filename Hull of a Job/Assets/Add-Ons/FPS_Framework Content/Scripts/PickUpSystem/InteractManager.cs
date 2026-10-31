@@ -1,6 +1,3 @@
-/// <summary>
-/// This script belongs to cowsins� as a part of the cowsins� FPS Engine. All rights reserved. 
-/// </summary>
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
@@ -210,6 +207,20 @@ namespace hb.framework
             Events.OnDisableInteraction?.Invoke();
         }
 
+        // Uses the interactable's own hold time if it has one, otherwise the default
+        private float GetRequiredHoldTime()
+        {
+            if (highlightedInteractable != null)
+            {
+                if (highlightedInteractable.HoldTimeOverride >= 0f)
+                {
+                    return highlightedInteractable.HoldTimeOverride;
+                }
+            }
+
+            return progressRequiredToInteract;
+        }
+
         private void DetectInput()
         {
             if (highlightedInteractable == null || isForbiddenInteraction)
@@ -222,17 +233,22 @@ namespace hb.framework
             if (inputManager.Interacting)
             {
                 progressElapsed += Time.deltaTime;
-                if (progressRequiredToInteract > 0)
+
+                float requiredHoldTime = GetRequiredHoldTime();
+
+                if (requiredHoldTime > 0)
                 {
-                    Events.OnInteractionProgressChanged?.Invoke(progressElapsed / progressRequiredToInteract);
+                    Events.OnInteractionProgressChanged?.Invoke(progressElapsed / requiredHoldTime);
                 }
 
                 // Interact
-                if (progressElapsed >= progressRequiredToInteract || highlightedInteractable.InstantInteraction && progressElapsed > 0) PerformInteraction();
-            }
-            else
-            {
-                ResetInteractionProgress();
+                bool holdComplete = progressElapsed >= requiredHoldTime;
+                bool instantAndPressed = highlightedInteractable.InstantInteraction && progressElapsed > 0;
+
+                if (holdComplete || instantAndPressed)
+                {
+                    PerformInteraction();
+                }
             }
         }
 

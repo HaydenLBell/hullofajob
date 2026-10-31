@@ -167,6 +167,24 @@ namespace hb.framework
             return "<color=#" + hexColour + ">" + missingWeaponText + "</color>";
         }
 
+        // Brings a cleaned mess back (used by MessSpawner for things like leaks)
+public void ResetMess()
+{
+    alreadyInteracted = false;
+
+    Collider messCollider = GetComponent<Collider>();
+    if (messCollider != null)
+    {
+        messCollider.enabled = true;
+    }
+
+    gameObject.SetActive(true);
+
+    RefreshState();
+
+    // Tell the progress system this mess is back
+    RepairEvents.Notify();
+}
         private string GetCleanText()
         {
             return GetMessName();
