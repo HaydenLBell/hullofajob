@@ -1,6 +1,3 @@
-/// <summary>
-/// This script belongs to cowsins™ as a part of the cowsins´ FPS Engine. All rights reserved. 
-/// </summary>
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
@@ -20,38 +17,87 @@ namespace hb.framework
         private Weapon_SO weapon;
 
         private Vector3 initScale;
+        private bool initScaleSet = false;
 
-        private CanvasGroup canvasGroup; 
+        private CanvasGroup canvasGroup;
 
-        private void OnEnable()
+        // Finds (or adds) the CanvasGroup the first time it's needed
+        private CanvasGroup GetCanvasGroup()
         {
-            initScale = transform.localScale;
-            canvasGroup = GetComponent<CanvasGroup>(); 
+            if (canvasGroup == null)
+            {
+                canvasGroup = GetComponent<CanvasGroup>();
+
+                if (canvasGroup == null)
+                {
+                    canvasGroup = gameObject.AddComponent<CanvasGroup>();
+                }
+            }
+
+            return canvasGroup;
         }
 
-        public void GetImage() => image.sprite = (weapon == null) ? nullWeaponIndicator : weapon.icon;
+        // Records the normal scale the first time it's needed
+        private Vector3 GetInitScale()
+        {
+            if (initScaleSet == false)
+            {
+                initScale = transform.localScale;
+                initScaleSet = true;
+            }
+
+            return initScale;
+        }
+
+        public void GetImage()
+        {
+            if (image == null)
+            {
+                return;
+            }
+
+            if (weapon == null)
+            {
+                image.sprite = nullWeaponIndicator;
+            }
+            else
+            {
+                image.sprite = weapon.icon;
+            }
+        }
 
         public void Select()
         {
-            transform.localScale = initScale * 1.2f;
-            canvasGroup.alpha = 1;
+            transform.localScale = GetInitScale() * 1.2f;
+            GetCanvasGroup().alpha = 1f;
         }
 
         public void Deselect()
         {
-            transform.localScale = initScale;
-            canvasGroup.alpha = .2f;
+            transform.localScale = GetInitScale();
+            GetCanvasGroup().alpha = 0.2f;
         }
 
         public void SetWeapon(Weapon_SO newWeapon)
         {
-            weapon = newWeapon ?? null;
+            weapon = newWeapon;
             GetImage();
         }
 
         public void Initialize(int index)
         {
-            numKeyText.text = (index + 1).ToString();
+            // Make sure the generated slot is visible, even if the template was inactive
+            gameObject.SetActive(true);
+
+            // Record the normal scale before anything changes it
+            GetInitScale();
+
+            if (numKeyText != null)
+            {
+                numKeyText.text = (index + 1).ToString();
+            }
+
+            GetImage();
         }
     }
 }
