@@ -29,6 +29,12 @@ namespace hb.framework
         [Tooltip(" Original spread you want to start with "), SerializeField]
         private float defaultSpread = 10f;
 
+        [Tooltip("Sprite for the centre dot. Use a white circle for a round dot. Leave empty for a square.")]
+        [SerializeField] private Sprite centerSprite;
+
+        [Tooltip("Diameter of the centre dot in pixels.")]
+        [SerializeField] private float centerSize = 6f;
+
         [Title("Spread Settings"), SerializeField] private bool resizeCrosshair;
         [SerializeField] private float walkSpread, runSpread, crouchSpread, jumpSpread;
         [SerializeField, Tooltip("Do not draw the crosshair when aiming a weapon")] private bool removeCrosshairOnAiming;
@@ -98,6 +104,12 @@ namespace hb.framework
             crosshairContainer = containerObj.transform;
 
             centerImage = CreateImage("Center");
+
+            if (centerSprite != null)
+            {
+                centerImage.sprite = centerSprite;
+                centerImage.preserveAspect = true;
+            }
             topImage = CreateImage("Top");
             downImage = CreateImage("Down");
             leftImage = CreateImage("Left");
@@ -220,6 +232,8 @@ namespace hb.framework
 
             UpdateImageRect(bottomRightBracket1, parts.bottomRightBracket, new Vector2(spread - size/2, -spread + width/2), new Vector2(size, width));
             UpdateImageRect(bottomRightBracket2, parts.bottomRightBracket, new Vector2(spread - width/2, -spread + size/2), new Vector2(width, size));
+
+            UpdateImageRect(centerImage, parts.center, Vector2.zero, new Vector2(centerSize, centerSize));
         }
 
         private void UpdateImageRect(Image img, bool active, Vector2 anchoredPosition, Vector2 sizeDelta)

@@ -24,8 +24,12 @@ namespace hb.UI
         private float targetFill = 0f;
         private float shownFill = 0f;
 
+        private string baseName = "";
+
         public void Setup(string roomName, bool showAsSegment)
         {
+            baseName = roomName;
+
             if (label != null)
             {
                 label.text = roomName;
@@ -58,6 +62,12 @@ namespace hb.UI
         public void SetProgress(float progress, bool isCurrentRoom)
         {
             targetFill = progress;
+
+            if (label != null)
+            {
+                //int percent = Mathf.RoundToInt(progress * 100f);
+               // label.text = baseName + "  " + percent + "%";
+            }
 
             if (tick != null)
             {

@@ -12,15 +12,16 @@ namespace hb
         [Header("Source")]
         [SerializeField] private GameManager gameManager;
 
-        [Header("Slots")]
+        [Header("Deck bar")]
         [SerializeField] private RoomSlotUI slotPrefab;
         [SerializeField] private Transform slotRow;
 
-        [Tooltip("With this many rooms or fewer, show labelled segments. Above it, show pips.")]
-        [SerializeField] private int maxLabelledRooms = 5;
+        [Tooltip("With this many decks or fewer, show labelled segments. Above it, show pips.")]
+        [SerializeField] private int maxLabelledSlots = 5;
 
-        [Header("Current room")]
+        [Header("Current room (side text)")]
         [SerializeField] private TextMeshProUGUI currentRoomLabel;
+        [SerializeField] private TextMeshProUGUI totalCompletionLabel;
         [SerializeField] private Image currentRoomFill;
 
         [Header("Fading")]
@@ -29,19 +30,18 @@ namespace hb
         [SerializeField] private float showDuration = 3f;
         [SerializeField] private float fadeSpeed = 1.5f;
 
-        [Header("Room complete toast")]
+        [Header("Complete toast")]
         [SerializeField] private CanvasGroup toastGroup;
         [SerializeField] private TextMeshProUGUI toastText;
         [SerializeField] private float toastDuration = 2f;
 
-        private RoomZone[] rooms = new RoomZone[0];
+        private DeckZone[] decks = new DeckZone[0];
         private RoomSlotUI[] slots = new RoomSlotUI[0];
         private RoomZone currentRoom;
+        private DeckZone currentDeck;
 
         private Coroutine fadeRoutine;
         private Coroutine toastRoutine;
-
-        
 
         private void OnEnable()
         {
@@ -51,6 +51,7 @@ namespace hb
             {
                 gameManager.OnProgressChanged.AddListener(OnProgressChanged);
                 gameManager.OnRoomCompleted.AddListener(OnRoomCompleted);
+                gameManager.OnDeckCompleted.AddListener(OnDeckCompleted);
             }
         }
 
@@ -62,17 +63,8 @@ namespace hb
             {
                 gameManager.OnProgressChanged.RemoveListener(OnProgressChanged);
                 gameManager.OnRoomCompleted.RemoveListener(OnRoomCompleted);
+                gameManager.OnDeckCompleted.RemoveListener(OnDeckCompleted);
             }
-        }
-
-        private void OnProgressChanged(float percent)
-        {
-            Refresh();
-        }
-
-        private void OnRoomCompleted(RoomZone room)
-        {
-            ShowToast(room.RoomName + " complete");
         }
 
         private void Start()
@@ -88,32 +80,58 @@ namespace hb
 
         private void BuildSlots()
         {
-            rooms = gameManager.Rooms;
+            if (gameManager == null || slotPrefab == null || slotRow == null)
+            {
+                Debug.LogWarning("ProgressHUDUI is missing a reference (Game Manager, Slot Prefab or Slot Row).", this);
+                return;
+            }
 
-            bool showAsSegments = rooms.Length <= maxLabelledRooms;
-            slots = new RoomSlotUI[rooms.Length];
+            decks = gameManager.Decks;
 
-            for (int i = 0; i < rooms.Length; i++)
+            bool showAsSegments = decks.Length <= maxLabelledSlots;
+            slots = new RoomSlotUI[decks.Length];
+
+            for (int i = 0; i < decks.Length; i++)
             {
                 RoomSlotUI slot = Instantiate(slotPrefab, slotRow);
-                slot.Setup(rooms[i].RoomName, showAsSegments);
+                slot.Setup(decks[i].DeckName, showAsSegments);
                 slots[i] = slot;
             }
         }
 
+        // ---------- Events ----------
+
+        private void OnProgressChanged(float percent)
+        {
+            Refresh();
+        }
+
+        private void OnRoomCompleted(RoomZone room)
+        {
+            ShowToast(room.RoomName + " complete");
+        }
+
+        private void OnDeckCompleted(DeckZone deck)
+        {
+            // Shown after the room toast if both finish together, since it replaces it
+            ShowToast(deck.DeckName + " complete");
+        }
 
         private void OnPlayerEnteredRoom(RoomZone room)
         {
             currentRoom = room;
+            currentDeck = room.GetComponentInParent<DeckZone>();
             Refresh();
         }
 
+        // ---------- Display ----------
+
         public void Refresh()
         {
-            for (int i = 0; i < rooms.Length; i++)
+            for (int i = 0; i < decks.Length; i++)
             {
-                bool isCurrent = rooms[i] == currentRoom;
-                slots[i].SetProgress(rooms[i].Progress, isCurrent);
+                bool isCurrent = decks[i] == currentDeck;
+                slots[i].SetProgress(decks[i].Progress, isCurrent);
             }
 
             UpdateCurrentRoomDisplay();
@@ -131,6 +149,12 @@ namespace hb
             {
                 int percent = Mathf.RoundToInt(currentRoom.Progress * 100f);
                 currentRoomLabel.text = currentRoom.RoomName + "  " + percent + "%";
+            }
+
+            if (totalCompletionLabel != null)
+            {
+                int totalPercent = Mathf.RoundToInt(gameManager.PercentRepaired);
+                totalCompletionLabel.text = "Total: " + totalPercent + "%";
             }
 
             if (currentRoomFill != null)
