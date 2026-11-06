@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
 
     public UnityEvent<DeckZone> OnDeckCompleted;
 
+    [SerializeField] private GameObject exitInteractBox;
+
     public DeckZone[] Decks
     {
         get { return decks; }
@@ -62,6 +64,8 @@ public class GameManager : MonoBehaviour
 
         decks = FindObjectsByType<DeckZone>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         System.Array.Sort(decks, CompareDeckOrder);
+
+        exitInteractBox.SetActive(false);
     }
 
     private void Start()
@@ -160,7 +164,9 @@ public class GameManager : MonoBehaviour
 
             if (OnAllRepaired != null)
             {
+                Debug.Log("we done");
                 OnAllRepaired.Invoke();
+                exitInteractBox.SetActive(true);
             }
         }
     }
