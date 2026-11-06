@@ -1,68 +1,147 @@
 using UnityEngine;
 using UnityEngine.Events;
 using hb.framework;
-using TMPro;
-using UnityEngine.UI;
-using System.Linq;
+using hb.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Lighting")]
     [SerializeField] private GameObject emergencyLights;
     [SerializeField] private GameObject normalLights;
 
-    [SerializeField] private int totalObjects;
-    [SerializeField] private int repairedObjects;
+    [Header("Progress (read only)")]
+    [SerializeField] private int totalTasks;
+    [SerializeField] private int completedTasks;
     [SerializeField] private float percentRepaired;
 
-    [SerializeField] private TextMeshProUGUI completionText;
-    [SerializeField] private Image completionFill;
-
-    public float PercentRepaired => percentRepaired;
-
+    [Header("Events")]
     public UnityEvent<float> OnProgressChanged;
+    public UnityEvent<RoomZone> OnRoomCompleted;
     public UnityEvent OnAllRepaired;
 
-    private IRepairTask[] tasks;
-    private bool allRepairedFired;
+    public float PercentRepaired
+    {
+        get { return percentRepaired; }
+    }
 
-    private void OnEnable() => RepairEvents.OnTaskStateChanged += Recount;
-    private void OnDisable() => RepairEvents.OnTaskStateChanged -= Recount;
+    public RoomZone[] Rooms
+    {
+        get { return rooms; }
+    }
+
+    private RoomZone[] rooms = new RoomZone[0];
+    private bool[] roomWasComplete = new bool[0];
+    private bool allRepairedFired = false;
+    private bool initialised = false;
+
+    private void OnEnable()
+    {
+        RepairEvents.OnTaskStateChanged += Recount;
+    }
+
+    private void OnDisable()
+    {
+        RepairEvents.OnTaskStateChanged -= Recount;
+    }
+
+    private void Awake()
+    {
+        // Find rooms early so the HUD can build its slots in its own Start
+        rooms = FindObjectsByType<RoomZone>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        System.Array.Sort(rooms, CompareRoomOrder);
+    }
 
     private void Start()
     {
-        emergencyLights.SetActive(true);
-        normalLights.SetActive(false);
+        if (emergencyLights != null) emergencyLights.SetActive(true);
+        if (normalLights != null) normalLights.SetActive(false);
 
-        tasks = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None)
-            .OfType<IRepairTask>()
-            .ToArray();
-        totalObjects = tasks.Length;
+        // Rooms that start with nothing to do count as already complete (no toast)
+        roomWasComplete = new bool[rooms.Length];
+        for (int i = 0; i < rooms.Length; i++)
+        {
+            roomWasComplete[i] = rooms[i].IsComplete;
+        }
+
+        WarnAboutTasksOutsideRooms();
+
+        initialised = true;
         Recount();
+    }
+
+    private int CompareRoomOrder(RoomZone a, RoomZone b)
+    {
+        return a.Order.CompareTo(b.Order);
     }
 
     private void Recount()
     {
-        if (tasks == null) return;
-
-        repairedObjects = 0;
-        foreach (IRepairTask t in tasks)
+        if (initialised == false)
         {
-            if (t is MonoBehaviour mb && mb != null && t.IsRepaired) repairedObjects++;
+            return;
         }
 
-        percentRepaired = totalObjects > 0
-            ? (float)repairedObjects / totalObjects * 100f
-            : 100f;
+        totalTasks = 0;
+        completedTasks = 0;
 
-        OnProgressChanged?.Invoke(percentRepaired);
+        for (int i = 0; i < rooms.Length; i++)
+        {
+            RoomZone room = rooms[i];
 
-        if (completionText != null) completionText.text = Mathf.FloorToInt(percentRepaired) + "%";
-        if (completionFill != null) completionFill.fillAmount = percentRepaired / 100f;
+            totalTasks = totalTasks + room.TotalTasks;
+            completedTasks = completedTasks + room.CompletedTasks;
 
-        if (repairedObjects == totalObjects && totalObjects > 0 && !allRepairedFired)
+            // Room has just been finished
+            if (room.IsComplete && roomWasComplete[i] == false)
+            {
+                if (OnRoomCompleted != null)
+                {
+                    OnRoomCompleted.Invoke(room);
+                }
+            }
+
+            roomWasComplete[i] = room.IsComplete;
+        }
+
+        if (totalTasks > 0)
+        {
+            percentRepaired = (float)completedTasks / totalTasks * 100f;
+        }
+        else
+        {
+            percentRepaired = 100f;
+        }
+
+        if (OnProgressChanged != null)
+        {
+            OnProgressChanged.Invoke(percentRepaired);
+        }
+
+        if (totalTasks > 0 && completedTasks == totalTasks && allRepairedFired == false)
         {
             allRepairedFired = true;
-            OnAllRepaired?.Invoke();
+
+            if (OnAllRepaired != null)
+            {
+                OnAllRepaired.Invoke();
+            }
+        }
+    }
+
+    // Any task that isn't under a Room won't be counted, so flag it
+    private void WarnAboutTasksOutsideRooms()
+    {
+        MonoBehaviour[] allBehaviours = FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        foreach (MonoBehaviour behaviour in allBehaviours)
+        {
+            if (behaviour is IRepairTask)
+            {
+                if (behaviour.GetComponentInParent<RoomZone>(true) == null)
+                {
+                    Debug.LogWarning("Task isn't inside a Room, so it won't count towards progress: " + behaviour.name, behaviour);
+                }
+            }
         }
     }
 }
